@@ -14,7 +14,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        DBAccess dBAccess = new DBAccess();
+        DBAccess objDBAccess = new DBAccess();
         public LoginPage()
         {
             InitializeComponent();
@@ -32,7 +32,21 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
             else
             {
+                SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University) values(@userName, @userEmail, @userPassword,@UserUniversity)");
+               
+                /*This Part is to make the Data private*/
+                insertCommand.Parameters.AddWithValue("@userName", userName);
+                insertCommand.Parameters.AddWithValue("@userEmail", userEmail);
+                insertCommand.Parameters.AddWithValue("@userPassword", userPassword);
+                insertCommand.Parameters.AddWithValue("@userUniversity", userUniversity);
+
+                int row = objDBAccess.executeQuery(insertCommand);
+                if (row == 1)
+                {
+
+                }
             }
+
         }
 
     }
