@@ -13,11 +13,11 @@ namespace Implementierung_von_Anwendungssystemen
         private static SqlDataAdapter adapter = new SqlDataAdapter();
         public SqlTransaction DbTran;
 
-        private static string strConnString = "Data Source=ubi19.informatik.uni-siegen.de;Initial Catalog=Testdatenbank3;Persist Security Info=True;User ID=gruppe05-1;Password=***********";
+        private static string strConnString = "Data Source=ubi19.informatik.uni-siegen.de;Initial Catalog=Testdatenbank3;Persist Security Info=True;User ID=gruppe05-1;Password=Ningen19!";
 
 
 
-        public void createConn()
+        public void CreateConn()
         {
             try
             {
@@ -34,19 +34,19 @@ namespace Implementierung_von_Anwendungssystemen
         }
 
 
-        public void closeConn()
+        public void CloseConn()
         {
             connection.Close();
         }
 
 
-        public int executeDataAdapter(DataTable tblName, string strSelectSql)
+        public int ExecuteDataAdapter(DataTable tblName, string strSelectSql)
         {
             try
             {
                 if (connection.State == 0)
                 {
-                    createConn();
+                    CreateConn();
                 }
 
                 adapter.SelectCommand.CommandText = strSelectSql;
@@ -68,13 +68,13 @@ namespace Implementierung_von_Anwendungssystemen
         }
 
 
-        public void readDatathroughAdapter(string query, DataTable tblName)
+        public void ReadDatathroughAdapter(string query, DataTable tblName)
         {
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 {
-                    createConn();
+                    CreateConn();
                 }
 
                 command.Connection = connection;
@@ -91,7 +91,7 @@ namespace Implementierung_von_Anwendungssystemen
         }
 
 
-        public SqlDataReader readDatathroughReader(string query)
+        public SqlDataReader ReadDatathroughReader(string query)
         {
             //DataReader used to sequentially read data from a data source
             SqlDataReader reader;
@@ -100,7 +100,7 @@ namespace Implementierung_von_Anwendungssystemen
             {
                 if (connection.State == ConnectionState.Closed)
                 {
-                    createConn();
+                    CreateConn();
                 }
 
                 command.Connection = connection;
@@ -117,13 +117,13 @@ namespace Implementierung_von_Anwendungssystemen
         }
 
 
-        public int executeQuery(SqlCommand dbCommand)
+        public int ExecuteQuery(SqlCommand dbCommand)
         {
             try
             {
                 if (connection.State == 0)
                 {
-                    createConn();
+                    CreateConn();
                 }
 
                 dbCommand.Connection = connection;
