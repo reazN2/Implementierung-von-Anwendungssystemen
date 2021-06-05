@@ -99,6 +99,9 @@
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
+    <TabBar>
+        <ShellContent Route="Registrierung" ContentTemplate="{DataTemplate local:Registration}" />
+    </TabBar>
 
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.

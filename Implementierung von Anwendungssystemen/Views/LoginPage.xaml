@@ -8,23 +8,14 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-
-            <StackLayout Grid.Row="0">
-                <Entry Placeholder="Name" FontSize="16" x:Name="EntryUserName"/>
-            </StackLayout>
             <StackLayout Grid.Row="1">
-                <Entry Placeholder="Password" FontSize="16" x:Name="EntryUserPassword"/>
+                <Entry Placeholder="Password" FontSize="16" x:Name="UserPassword"/>
             </StackLayout>
             <StackLayout Grid.Row="2">
-                <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail"/>
-            </StackLayout>
-            <StackLayout Grid.Row="3">
-                <Entry Placeholder="University" FontSize="16" x:Name="EntryUserUniversity"/>
-            </StackLayout>
-            <StackLayout Grid.Row="4">
-                <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
+                <Entry Placeholder="Email" FontSize="16" x:Name="UserEmail"/>
             </StackLayout>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked_1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
