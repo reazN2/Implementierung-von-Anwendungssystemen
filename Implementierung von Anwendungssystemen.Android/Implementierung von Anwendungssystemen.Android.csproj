@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -98,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Implementierung von Anwendungssystemen\Implementierung von Anwendungssystemen.csproj">
-      <Project>{58729FFB-7B73-491F-8B35-650F0B5C72FA}</Project>
+      <Project>{C8C66B69-9266-4B99-843B-22B9782F8730}</Project>
       <Name>Implementierung von Anwendungssystemen</Name>
     </ProjectReference>
   </ItemGroup>
