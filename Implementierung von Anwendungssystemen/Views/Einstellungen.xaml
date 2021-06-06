@@ -6,7 +6,7 @@
         <StackLayout>
             <StackLayout Padding="10,10,10,0" VerticalOptions="CenterAndExpand">
 
-                <StackLayout Grid.Row="0">
+                <StackLayout HorizontalOptions="CenterAndExpand">
                     <Label Text="Name:" FontSize="Title"/>
                     <Entry Placeholder="Name" FontSize="16" x:Name="EntryUserName"/>
                 </StackLayout>
