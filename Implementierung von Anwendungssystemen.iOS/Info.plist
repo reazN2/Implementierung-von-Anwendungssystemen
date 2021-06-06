@@ -34,30 +34,11 @@
 	<string>Implementierung_von_Anwendungssystemen</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-	<key>Custom Property</key>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>New Entry</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>New Entry</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>NSLocationAlwaysAndWhenInUseUsageDescription</string>
-	<key>Custom Property 1</key>
-	<string>NSLocationWhenInUseUsageDescription</string>
-	<key>Custom Property 2</key>
-	<string>NSLocationAlwaysUsageDescription</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModePedestrian</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 </dict>
 </plist>

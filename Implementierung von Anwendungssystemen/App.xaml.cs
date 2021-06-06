@@ -16,7 +16,6 @@ namespace Implementierung_von_Anwendungssystemen
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
-
         protected override void OnStart()
         {
         }
