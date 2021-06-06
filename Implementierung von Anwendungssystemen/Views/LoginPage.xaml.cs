@@ -26,7 +26,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
         }
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Registration());
+            // Navigation.PushAsync(new Registration());
+            Shell.Current.GoToAsync("//Registration");
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)
@@ -57,7 +59,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                     DisplayAlert("Login erfolgreich","Sie haben sich erfolgreich eingeloggt","Weiter zur App");
                     objDBAccess.CloseConn();
-                    Navigation.PushAsync(new AboutPage());
+                    // Navigation.PushAsync(new AboutPage());
+                    Shell.Current.GoToAsync("//AboutPage");
                 } else
                 {
                     DisplayAlert("Fehler", "E-Mail oder Passwort falsch", "OK");

@@ -15,6 +15,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public Einstellungen()
         {
             InitializeComponent();
+            EntryUserName.Text = LoginPage.name;
+            EntryUserEmail.Text = LoginPage.email;
+            EntryUserPassword.Text = LoginPage.password;
+            EntryUserUniversity.Text = LoginPage.university;
         }
 
         private void UpdateAccountInfo(object sender, EventArgs e)
