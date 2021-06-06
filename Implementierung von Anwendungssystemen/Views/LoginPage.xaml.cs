@@ -13,7 +13,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
-    {
+    {   
+        /*Das Nächste ist static, damit man die Daten überall erreichen kann*/
+        public static string id, email, university, password, name, roles;
+
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
         public LoginPage()
@@ -45,6 +48,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                 if(dtUsers.Rows.Count == 1)
                 {
+                    id = dtUsers.Rows[0]["Id"].ToString();
+                    email = dtUsers.Rows[0]["Email"].ToString();
+                    university = dtUsers.Rows[0]["University"].ToString();
+                    password = dtUsers.Rows[0]["Password"].ToString();
+                    name = dtUsers.Rows[0]["Name"].ToString();
+                    roles = dtUsers.Rows[0]["Roles"].ToString();
+
                     DisplayAlert("Login erfolgreich","Sie haben sich erfolgreich eingeloggt","Weiter zur App");
                     objDBAccess.CloseConn();
                     Navigation.PushAsync(new AboutPage());
