@@ -14,7 +14,7 @@ namespace Implementierung_von_Anwendungssystemen
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
