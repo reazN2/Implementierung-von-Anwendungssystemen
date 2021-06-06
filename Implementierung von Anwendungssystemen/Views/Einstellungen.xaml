@@ -4,9 +4,9 @@
              x:Class="Implementierung_von_Anwendungssystemen.Views.Einstellungen">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Padding="10,10,10,0" VerticalOptions="CenterAndExpand">
+            <StackLayout Padding="100,10,10,0" VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
                 <StackLayout HorizontalOptions="Center">
-                    <Label Text="Name:" FontSize="Title"/>
+                    <Label Text="Nameeeeeeeeeeeeee:" FontSize="Title"/>
                     <Entry Placeholder="Name" FontSize="16" x:Name="EntryUserName"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
