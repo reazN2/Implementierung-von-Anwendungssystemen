@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementierung von Anwendu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementierung von Anwendungssystemen.iOS", "Implementierung von Anwendungssystemen.iOS\Implementierung von Anwendungssystemen.iOS.csproj", "{037A1B6B-F131-4BCB-AF12-44198C0C0FF3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Implementierung von Anwendungssystemen", "Implementierung von Anwendungssystemen\Implementierung von Anwendungssystemen.csproj", "{C8C66B69-9266-4B99-843B-22B9782F8730}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Implementierung von Anwendungssystemen", "Implementierung von Anwendungssystemen\Implementierung von Anwendungssystemen.csproj", "{C8C66B69-9266-4B99-843B-22B9782F8730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
