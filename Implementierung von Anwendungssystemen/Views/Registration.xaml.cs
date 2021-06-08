@@ -26,25 +26,26 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
             string userEmail = EntryUserEmail.Text;
-            if (string.IsNullOrEmpty(userName))
-            {
-                Console.WriteLine("Bitte füge einen Namen ein");
+            if (string.IsNullOrEmpty(userName)) {
+
+
+                //Console.WriteLine("Bitte füge einen Namen ein");
                 DisplayAlert("Error", "Bitte füge einen Namen ein", "OK");
             }
             else if (string.IsNullOrEmpty(userPassword))
             {
-                Console.WriteLine("Bitte füge ein Password ein");
+                //Console.WriteLine("Bitte füge ein Password ein");
                 DisplayAlert("Error", "Bitte füge ein Passwort ein", "OK");
             }
             else if (string.IsNullOrEmpty(userEmail))
             {
 
-                Console.WriteLine("Bitte füge eine E-Mail ein");
+                //Console.WriteLine("Bitte füge eine E-Mail ein");
                 DisplayAlert("Error", "Bitte füge eine E-Mail Adresse ein", "OK");
             }
             else if (string.IsNullOrEmpty(userUniversity))
             {
-                Console.WriteLine("Bitte füge eine Universität ein");
+                //Console.WriteLine("Bitte füge eine Universität ein");
                 DisplayAlert("Error", "Bitte füge eine Universität ein", "OK");
             }
 
