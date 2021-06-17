@@ -45,6 +45,10 @@
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
+                <Entry x:Name="txtSource" Placeholder="Source"></Entry>
+                <Entry x:Name="txtDestination" Placeholder="Destination"></Entry>
+                <Button x:Name="btnLocation" Text="Get Distance" Clicked="btnLocation_Clicked"/>
+                <Label HorizontalTextAlignment="Center" x:Name="lblDistance"></Label>
             </StackLayout>
         </ScrollView>
     </Grid>
