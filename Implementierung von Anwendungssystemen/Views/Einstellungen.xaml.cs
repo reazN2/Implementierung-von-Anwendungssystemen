@@ -25,5 +25,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
 
         }
+
+        private void DeleteAccount(object sender, EventArgs e)
+        {
+
+        }
     }
 }
