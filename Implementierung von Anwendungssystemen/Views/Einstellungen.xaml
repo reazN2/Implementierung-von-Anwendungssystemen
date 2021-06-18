@@ -3,21 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Implementierung_von_Anwendungssystemen.Views.Einstellungen">
     <ContentPage.Content>
-        <StackLayout Padding="0,20,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" WidthRequest="350">
-                <StackLayout HorizontalOptions="Start">
-                <Label Text="Name:" FontSize="Title" WidthRequest="350"/>
+        <StackLayout Padding="0,30,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" WidthRequest="370">
+            <StackLayout HorizontalOptions="Start">
+                <Label Text="Settings" FontSize="Title" WidthRequest="350" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Start">
+                <Label Text="Name:" FontSize="Medium" WidthRequest="350"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="EntryUserName"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
-                <Label Text="Password:" FontSize="Title"/>
+                <Label Text="Password:" FontSize="Medium"/>
                 <Entry Placeholder="Password" FontSize="Body" x:Name="EntryUserPassword"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
-                <Label Text="E-Mail:" FontSize="Title"/>
+                <Label Text="E-Mail:" FontSize="Medium"/>
                 <Entry Placeholder="E-Mail" FontSize="Body" x:Name="EntryUserEmail"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3">
-                <Label Text="University:" FontSize="Title"/>
+                <Label Text="University:" FontSize="Medium"/>
                 <Entry Placeholder="University" FontSize="Body" x:Name="EntryUserUniversity"/>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
