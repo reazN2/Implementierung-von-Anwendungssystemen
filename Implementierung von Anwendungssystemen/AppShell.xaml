@@ -84,8 +84,8 @@
     <FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Einstellungen" Icon="icon_feed.png">
-        <ShellContent Route="Einstellungen" ContentTemplate="{DataTemplate local:Einstellungen}" />
+    <FlyoutItem Title="Settings" Icon="icon_feed.png">
+        <ShellContent Route="Settings" ContentTemplate="{DataTemplate local:Einstellungen}" />
     </FlyoutItem>
 
 
