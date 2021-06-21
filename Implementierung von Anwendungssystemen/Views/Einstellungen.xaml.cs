@@ -63,7 +63,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 if (row == 1)
                 {
                     DisplayAlert("Success", "Account information updated successfully", "Continue");
-                    Navigation.PushAsync(new Einstellungen());
+                    Shell.Current.GoToAsync("//Einstellungen");
                 }
                 else
                 {
@@ -73,9 +73,26 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
-        private void DeleteAccount(object sender, EventArgs e)
+        private async void DeleteAccount(object sender, EventArgs e)
         {
+            bool answer =  await DisplayAlert("Delete?", "Do you really want to delete your account?", "Delete", "Cancel");
+            if (answer)
+            {
+                string query = "DELETE from Users Where ID  = '" + LoginPage.id + "'";
 
+                SqlCommand deleteCommand = new SqlCommand(query);
+
+                int row = objDBAccess.ExecuteQuery(deleteCommand);
+                if (row == 1)
+                {
+                    DisplayAlert("Success", "Your account was deleted", "Continue");
+                    Shell.Current.GoToAsync("//LoginPage");
+                }
+                else
+                {
+                    DisplayAlert("Error", "Could not delete user profile", "OK");
+                }
+            }
         }
     }
 }
