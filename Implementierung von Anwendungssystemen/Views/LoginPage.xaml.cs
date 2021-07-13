@@ -24,24 +24,27 @@ namespace Implementierung_von_Anwendungssystemen.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
-        private void Button_Clicked_1(object sender, EventArgs e)
+       // private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Registration());
-            //Shell.Current.GoToAsync("//Registration");
+ 
+            //await Shell.Current.GoToAsync((Registration));
 
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
+        //private void Button_Clicked(object sender, EventArgs e)
         {
             string userEmail = EntryUserEmail.Text;
             string userPassword = EntryUserPassword.Text;
             if (string.IsNullOrEmpty(userEmail))
             {
-                DisplayAlert("E-Mail fehlt", "Bitte füge einen E-Mail ein", "OK");
+                DisplayAlert("E-Mail missing", "Please insert a e-mail adress", "OK");
             }
             else if (string.IsNullOrEmpty(userPassword))
             {
-                DisplayAlert("Passwort fehlt", "Bitte füge ein Passwort ein", "OK");
+                DisplayAlert("Passwort missing", "Please insert a password", "OK");
             } else
             {
                 string query = "Select * from Users Where Email= '" + userEmail + "' AND Password = '" + userPassword + "'";
@@ -57,10 +60,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     name = dtUsers.Rows[0]["Name"].ToString();
                     roles = dtUsers.Rows[0]["Roles"].ToString();
 
-                    DisplayAlert("Login erfolgreich","Sie haben sich erfolgreich eingeloggt","Weiter zur App");
+                    //DisplayAlert("Login successful","You loggend in successfully","Continue");
                     objDBAccess.CloseConn();
                     // Navigation.PushAsync(new AboutPage());
-                    Shell.Current.GoToAsync("//AboutPage");
+                    //Shell.Current.GoToAsync("//AboutPage");
+                    await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {
                     DisplayAlert("Fehler", "E-Mail oder Passwort falsch", "OK");

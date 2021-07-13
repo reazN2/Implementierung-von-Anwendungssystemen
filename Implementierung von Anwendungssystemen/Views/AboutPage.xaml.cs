@@ -56,5 +56,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
 
         }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+        }
     }
 }
