@@ -21,7 +21,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             resultLocation.Text = $"la-t:{result.Latitude}, lng: {result.Longitude}";
 
         }
-        async void btnLocation_Clicked(object sender, System.EventArgs e)
+        async void BtnLocation_Clicked(object sender, System.EventArgs e)
         {
             try
             {
