@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Implementierung_von_Anwendungssystemen.Views.Registration"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
              Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
         <StackLayout>
@@ -19,6 +19,11 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Entry Placeholder="University" FontSize="16" x:Name="EntryUserUniversity"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <StackLayout>
+                        <Picker Title="University" x:Name="Siegen"></Picker>
+                    </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
                     <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
