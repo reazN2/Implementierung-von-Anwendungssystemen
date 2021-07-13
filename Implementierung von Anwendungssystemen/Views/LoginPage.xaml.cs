@@ -67,7 +67,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {
-                    DisplayAlert("Fehler", "E-Mail oder Passwort falsch", "OK");
+                    DisplayAlert("Error", "E-Mail or Password wrong", "OK");
                 }
             }
         }
