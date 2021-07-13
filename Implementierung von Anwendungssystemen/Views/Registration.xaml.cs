@@ -62,12 +62,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)
                 {
-                    DisplayAlert("Erfolgreich registriert", "Der Account wurde erfolgreich erstellt", "Weiter zum Login");
+                    DisplayAlert("Registration successfull", "Account created successfully", "Continue to login");
                     Navigation.PushAsync(new LoginPage());
                 }
                 else
                 {
-                    DisplayAlert("Error", "Es wurde kein Account erstellt", "OK");
+                    DisplayAlert("Error", "Account could not be created", "OK");
                 }
             }
 

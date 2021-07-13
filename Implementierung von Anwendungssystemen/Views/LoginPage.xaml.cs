@@ -27,9 +27,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
        // private void Button_Clicked_1(object sender, EventArgs e)
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Registration());
- 
-            //await Shell.Current.GoToAsync((Registration));
+           // Navigation.PushAsync(new Registration());
+
+            await Shell.Current.GoToAsync(state: "//LoginPage/Registration");
 
         }
 
