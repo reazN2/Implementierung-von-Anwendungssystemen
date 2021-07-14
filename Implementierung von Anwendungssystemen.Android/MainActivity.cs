@@ -4,6 +4,16 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Xamarin.Forms;
+using Android.Widget;
+using Google.Android.Material.FloatingActionButton;
+using AndroidX.AppCompat.App;
+using static Android.Service.Carrier.CarrierMessagingService;
+using static Android.Support.V4.App.ActivityCompat;
+using Android.Views;
+using Xamarin.Essentials;
+using static Xamarin.Essentials.Platform;
+using Android.Content;
 
 namespace Implementierung_von_Anwendungssystemen.Droid
 {

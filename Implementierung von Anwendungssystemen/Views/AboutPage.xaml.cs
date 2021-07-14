@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Xamarin.Essentials;
@@ -61,5 +62,131 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
+
+        private void Btn_Clicked(object sender, EventArgs e)
+        {
+
+
+
+            const double EARTH_RADIUS = 6371009;
+
+            double ToRadians(double input)
+            {
+                return input / 180.0 * Math.PI;
+            }
+
+            double DistanceRadians(double lat1, double lng1, double lat2, double lng2)
+            {
+                double Hav(double x)
+                {
+                    double sinHalf = Math.Sin(x * 0.5);
+                    return sinHalf * sinHalf;
+                }
+                double ArcHav(double x)
+                {
+                    return 2 * Math.Asin(Math.Sqrt(x));
+                }
+                double HavDistance(double lat1b, double lat2b, double dLng)
+                {
+                    return Hav(lat1b - lat2b) + Hav(dLng) * Math.Cos(lat1b) * Math.Cos(lat2b);
+                }
+                return ArcHav(HavDistance(lat1, lat2, lng1 - lng2));
+            }
+
+            double ComputeDistanceBetween(LatLng from, LatLng to)
+            {
+                double ComputeAngleBetween(LatLng From, LatLng To)
+                {
+                    return DistanceRadians(ToRadians(from.Latitude), ToRadians(from.Longitude),
+                                                  ToRadians(to.Latitude), ToRadians(to.Longitude));
+                }
+                return ComputeAngleBetween(from, to) * EARTH_RADIUS;
+            }
+
+            double ComputeLength(List<LatLng> path)
+            {
+                if (path.Count < 2)
+                    return 0;
+
+                double length = 0;
+                LatLng prev = path[0];
+                double prevLat = ToRadians(prev.Latitude);
+                double prevLng = ToRadians(prev.Longitude);
+                foreach (LatLng point in path)
+                {
+                    double lat = ToRadians(point.Latitude);
+                    double lng = ToRadians(point.Longitude);
+                    length += DistanceRadians(prevLat, prevLng, lat, lng);
+                    prevLat = lat;
+                    prevLng = lng;
+                }
+                return length * EARTH_RADIUS;
+            }
+        }
+
+    }
+}
+public static class Meters
+{
+    const double EARTH_RADIUS = 6371009;
+
+    static double ToRadians(double input)
+    {
+        return input / 180.0 * Math.PI;
+    }
+
+    static double DistanceRadians(double lat1, double lng1, double lat2, double lng2)
+    {
+        double Hav(double x)
+        {
+            double sinHalf = Math.Sin(x * 0.5);
+            return sinHalf * sinHalf;
+        }
+        double ArcHav(double x)
+        {
+            return 2 * Math.Asin(Math.Sqrt(x));
+        }
+        double HavDistance(double lat1b, double lat2b, double dLng)
+        {
+            return Hav(lat1b - lat2b) + Hav(dLng) * Math.Cos(lat1b) * Math.Cos(lat2b);
+        }
+        return ArcHav(HavDistance(lat1, lat2, lng1 - lng2));
+    }
+
+    public static double ComputeDistanceBetween(LatLng from, LatLng to)
+    {
+        double ComputeAngleBetween(LatLng From, LatLng To)
+        {
+            return DistanceRadians(ToRadians(from.Latitude), ToRadians(from.Longitude),
+                                          ToRadians(to.Latitude), ToRadians(to.Longitude));
+        }
+        return ComputeAngleBetween(from, to) * EARTH_RADIUS;
+    }
+
+    private static double ToRadians(object longitude)
+    {
+        throw new NotImplementedException();
+    }
+
+
+
+    public static double ComputeLength(List<LatLng> path)
+    {
+        if (path.Count < 2)
+            return 0;
+
+        double length = 0;
+        LatLng prev = path[0];
+        double prevLat = ToRadians(prev.Latitude);
+        double prevLng = ToRadians(prev.Longitude);
+        foreach (LatLng point in path)
+        {
+            double lat = ToRadians(point.Latitude);
+            double lng = ToRadians(point.Longitude);
+            length += DistanceRadians(prevLat, prevLng, lat, lng);
+            prevLat = lat;
+            prevLng = lng;
+        }
+        return length * EARTH_RADIUS;
     }
 }
