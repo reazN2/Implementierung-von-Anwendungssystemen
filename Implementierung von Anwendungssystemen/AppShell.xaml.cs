@@ -13,6 +13,7 @@ namespace Implementierung_von_Anwendungssystemen
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(route:"Registration", typeof(Registration));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
