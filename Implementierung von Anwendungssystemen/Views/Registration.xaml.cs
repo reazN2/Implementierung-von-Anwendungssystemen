@@ -26,6 +26,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
             string userEmail = EntryUserEmail.Text;
+            string userRole = "User";
             if (string.IsNullOrEmpty(userName)) {
 
 
@@ -51,13 +52,14 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             else
             {
-                SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University) values(@userName, @userEmail, @userPassword,@UserUniversity)");
+                SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University,Roles) values(@userName, @userEmail, @userPassword,@userUniversity,@userRole)");
 
                 /*This Part is to make the Data private*/
                 insertCommand.Parameters.AddWithValue("@userName", userName);
                 insertCommand.Parameters.AddWithValue("@userEmail", userEmail);
                 insertCommand.Parameters.AddWithValue("@userPassword", userPassword);
                 insertCommand.Parameters.AddWithValue("@userUniversity", userUniversity);
+                insertCommand.Parameters.AddWithValue("@userRole", userRole);
 
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)

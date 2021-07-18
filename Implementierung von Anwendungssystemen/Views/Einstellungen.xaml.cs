@@ -85,12 +85,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 int row = objDBAccess.ExecuteQuery(deleteCommand);
                 if (row == 1)
                 {
-                    DisplayAlert("Success", "Your account was deleted", "Continue");
-                    Shell.Current.GoToAsync("//LoginPage");
+                    await DisplayAlert("Success", "Your account was deleted", "Continue");
+                    await Shell.Current.GoToAsync("//LoginPage");
                 }
                 else
                 {
-                    DisplayAlert("Error", "Could not delete user profile", "OK");
+                    await DisplayAlert ("Error", "Could not delete user profile", "OK");
                 }
             }
         }

@@ -40,11 +40,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userPassword = EntryUserPassword.Text;
             if (string.IsNullOrEmpty(userEmail))
             {
-                DisplayAlert("E-Mail missing", "Please insert a e-mail adress", "OK");
+                DisplayAlert ("E-Mail missing", "Please insert a e-mail adress", "OK");
             }
             else if (string.IsNullOrEmpty(userPassword))
             {
-                DisplayAlert("Passwort missing", "Please insert a password", "OK");
+                DisplayAlert ("Passwort missing", "Please insert a password", "OK");
             } else
             {
                 string query = "Select * from Users Where Email= '" + userEmail + "' AND Password = '" + userPassword + "'";
@@ -67,7 +67,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {
-                    DisplayAlert("Error", "E-Mail or Password wrong", "OK");
+                    DisplayAlert ("Error", "E-Mail or Password wrong", "OK");
                 }
             }
         }

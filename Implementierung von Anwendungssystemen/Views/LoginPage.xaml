@@ -13,7 +13,7 @@
                 <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail"/>
             </StackLayout>
             <StackLayout Grid.Row="1">
-                <Entry Placeholder="Password" FontSize="16" x:Name="EntryUserPassword"/>
+                <Entry Placeholder="Password" FontSize="16" IsPassword="True" x:Name="EntryUserPassword"/>
             </StackLayout>
             <Button VerticalOptions="Center" Text="Login" Clicked="Button_Clicked"/>
             <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked_1"/>

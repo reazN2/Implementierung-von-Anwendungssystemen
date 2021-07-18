@@ -7,21 +7,21 @@
             <StackLayout HorizontalOptions="Start">
                 <Label Text="Settings" FontSize="Title" WidthRequest="350" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
-            <StackLayout HorizontalOptions="Start">
-                <Label Text="Name:" FontSize="Medium" WidthRequest="350"/>
-                <Entry Placeholder="Name" FontSize="Body" x:Name="EntryUserName"/>
+            <StackLayout Grid.Row="1">
+                <Label Text="Name:" FontSize="Medium"/>
+                <Entry Placeholder="Name" FontSize="Body" x:Name="EntryUserName" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
                 <Label Text="Password:" FontSize="Medium"/>
-                <Entry Placeholder="Password" FontSize="Body" x:Name="EntryUserPassword"/>
+                <Entry Placeholder="Password" FontSize="Body" IsPassword="True" x:Name="EntryUserPassword" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                 <Label Text="E-Mail:" FontSize="Medium"/>
-                <Entry Placeholder="E-Mail" FontSize="Body" x:Name="EntryUserEmail"/>
+                <Entry Placeholder="E-Mail" FontSize="Body" x:Name="EntryUserEmail" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                 <Label Text="University:" FontSize="Medium"/>
-                <Entry Placeholder="University" FontSize="Body" x:Name="EntryUserUniversity"/>
+                <Entry Placeholder="University" FontSize="Body" x:Name="EntryUserUniversity" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
                     <Button VerticalOptions="Center" Text="Save Changes" Clicked="UpdateAccountInfo"/>
