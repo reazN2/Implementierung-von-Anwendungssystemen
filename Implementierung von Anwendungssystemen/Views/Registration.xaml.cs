@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Implementierung_von_Anwendungssystemen.Views
 {
@@ -25,29 +26,39 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userName = EntryUserName.Text;
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
-            string userEmail = EntryUserEmail.Text;
+            string userEmail;
+            var email = EntryUserEmail.Text;
+            var emailPattern =
+                (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
+            if (Regex.IsMatch(email, emailPattern))
+            {
+                userEmail = EntryUserEmail.Text;
+            } else
+            {
+                userEmail = "";
+            }
+
             string userRole = "User";
             if (string.IsNullOrEmpty(userName)) {
 
 
                 //Console.WriteLine("Bitte füge einen Namen ein");
-                DisplayAlert("Error", "Bitte füge einen Namen ein", "OK");
+                DisplayAlert("Error", "Please enter a name", "OK");
             }
             else if (string.IsNullOrEmpty(userPassword))
             {
                 //Console.WriteLine("Bitte füge ein Password ein");
-                DisplayAlert("Error", "Bitte füge ein Passwort ein", "OK");
+                DisplayAlert("Error", "Please enter a password", "OK");
             }
             else if (string.IsNullOrEmpty(userEmail))
             {
+                DisplayAlert("Error", "University mail from participating universities required", "OK");
 
-                //Console.WriteLine("Bitte füge eine E-Mail ein");
-                DisplayAlert("Error", "Bitte füge eine E-Mail Adresse ein", "OK");
             }
             else if (string.IsNullOrEmpty(userUniversity))
             {
                 //Console.WriteLine("Bitte füge eine Universität ein");
-                DisplayAlert("Error", "Bitte füge eine Universität ein", "OK");
+                DisplayAlert("Error", "Please insert a university name", "OK");
             }
 
             else
@@ -64,7 +75,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)
                 {
-                    DisplayAlert("Registration successfull", "Account created successfully", "Continue to login");
+                    DisplayAlert("Registration successful", "Account created successfully", "Continue to login");
                     Navigation.PushAsync(new LoginPage());
                 }
                 else

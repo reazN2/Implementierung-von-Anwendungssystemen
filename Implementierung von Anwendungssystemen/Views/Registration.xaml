@@ -12,7 +12,7 @@
                     <Entry Placeholder="Name" FontSize="16" x:Name="EntryUserName"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
-                    <Entry Placeholder="Password" FontSize="16" x:Name="EntryUserPassword"/>
+                    <Entry Placeholder="Password" FontSize="16" x:Name="EntryUserPassword" IsPassword="True"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                     <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail"/>
