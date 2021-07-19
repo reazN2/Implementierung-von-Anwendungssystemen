@@ -23,6 +23,20 @@
                 <StackLayout Grid.Row="4">
                     <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
                 </StackLayout>
+                <StackLayout Grid.Row="4">
+                    <Picker x:Name="uniPicker" Title="University" Style="{StaticResource chooseNext}" SelectedIndex="OnModeChose">
+                        <Picker.Items>
+                            <x:String>Crete</x:String>
+                            <x:String>Maribor</x:String>
+                            <x:String>Orleans</x:String>
+                            <x:String>Porto</x:String>
+                            <x:String>Rome</x:String>
+                            <x:String>Siegen</x:String>
+                            <x:String>Vilnius</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
