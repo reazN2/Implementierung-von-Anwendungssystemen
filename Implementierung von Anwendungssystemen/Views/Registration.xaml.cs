@@ -16,6 +16,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
     public partial class Registration : ContentPage
     {
         DBAccess objDBAccess = new DBAccess();
+        DataTable dtUsers = new DataTable();
+
         public Registration()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
             string userEmail;
+            string alreadyExists;
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
@@ -37,6 +40,22 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 userEmail = "";
             }
+
+
+            string query = "Select * from Users Where Email= '" + userEmail +  "'";
+
+            objDBAccess.ReadDatathroughAdapter(query, dtUsers);
+
+            if (dtUsers.Rows.Count == 1)
+            {
+                alreadyExists = "true";
+            }
+            else
+            {
+                alreadyExists = "false";
+            }
+
+
 
             string userRole = "User";
             if (string.IsNullOrEmpty(userName)) {
@@ -59,6 +78,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 //Console.WriteLine("Bitte füge eine Universität ein");
                 DisplayAlert("Error", "Please insert a university name", "OK");
+            }
+            else if (alreadyExists == "true")
+            {
+                DisplayAlert("Error", "That email adress is already used", "OK");
+                alreadyExists = "false";
             }
 
             else
