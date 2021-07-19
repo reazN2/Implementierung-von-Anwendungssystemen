@@ -67,7 +67,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {
-                    DisplayAlert ("Error", "E-Mail or Password wrong or your Account was deactivated", "OK");
+                    DisplayAlert ("Error", "Could not log in. Either the email or password are wrong or your account was deactivated", "OK");
                 }
             }
         }

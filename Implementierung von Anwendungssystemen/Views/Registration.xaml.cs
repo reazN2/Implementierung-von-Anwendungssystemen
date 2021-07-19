@@ -28,7 +28,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userName = EntryUserName.Text;
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
-            bool   userLocked = true;
+            bool   userLocked = false;
             string userRole = "User";
             string userEmail;
             // string alreadyExists;
