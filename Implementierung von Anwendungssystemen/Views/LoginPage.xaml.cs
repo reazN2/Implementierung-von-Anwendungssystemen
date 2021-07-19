@@ -59,11 +59,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     password = dtUsers.Rows[0]["Password"].ToString();
                     name = dtUsers.Rows[0]["Name"].ToString();
                     roles = dtUsers.Rows[0]["Roles"].ToString();
-
-                    //DisplayAlert("Login successful","You loggend in successfully","Continue");
                     objDBAccess.CloseConn();
-                    // Navigation.PushAsync(new AboutPage());
-                    //Shell.Current.GoToAsync("//AboutPage");
+
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {

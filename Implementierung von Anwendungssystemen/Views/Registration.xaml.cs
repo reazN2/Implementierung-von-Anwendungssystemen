@@ -28,6 +28,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userName = EntryUserName.Text;
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
+            bool   userLocked = false;
+            string userRole = "User";
             string userEmail;
             string alreadyExists;
             var email = EntryUserEmail.Text;
@@ -36,17 +38,17 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (Regex.IsMatch(email, emailPattern))
             {
                 userEmail = EntryUserEmail.Text;
-            } else
+            }
+            else
             {
                 userEmail = "";
             }
 
-
-            string query = "Select * from Users Where Email= '" + userEmail +  "'";
+          /* string query = "Select * from Users Where Email= '" + userEmail + "' AND Roles = '" + userRole + "'";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUsers);
 
-            if (dtUsers.Rows.Count == 1)
+            if (dtUsers.Rows.Count > 0)
             {
                 alreadyExists = "true";
             }
@@ -55,59 +57,59 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 alreadyExists = "false";
             }
 
+          */
 
 
-            string userRole = "User";
-            if (string.IsNullOrEmpty(userName)) {
-
-
-                //Console.WriteLine("Bitte füge einen Namen ein");
-                DisplayAlert("Error", "Please enter a name", "OK");
-            }
-            else if (string.IsNullOrEmpty(userPassword))
-            {
-                //Console.WriteLine("Bitte füge ein Password ein");
-                DisplayAlert("Error", "Please enter a password", "OK");
-            }
-            else if (string.IsNullOrEmpty(userEmail))
-            {
-                DisplayAlert("Error", "University mail from participating universities required", "OK");
-
-            }
-            else if (string.IsNullOrEmpty(userUniversity))
-            {
-                //Console.WriteLine("Bitte füge eine Universität ein");
-                DisplayAlert("Error", "Please insert a university name", "OK");
-            }
-            else if (alreadyExists == "true")
-            {
-                DisplayAlert("Error", "That email adress is already used", "OK");
-                alreadyExists = "false";
-            }
-
-            else
-            {
-                SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University,Roles) values(@userName, @userEmail, @userPassword,@userUniversity,@userRole)");
-
-                /*This Part is to make the Data private*/
-                insertCommand.Parameters.AddWithValue("@userName", userName);
-                insertCommand.Parameters.AddWithValue("@userEmail", userEmail);
-                insertCommand.Parameters.AddWithValue("@userPassword", userPassword);
-                insertCommand.Parameters.AddWithValue("@userUniversity", userUniversity);
-                insertCommand.Parameters.AddWithValue("@userRole", userRole);
-
-                int row = objDBAccess.ExecuteQuery(insertCommand);
-                if (row == 1)
+               //string userRole = "User";
+                if (string.IsNullOrEmpty(userName))
                 {
-                    DisplayAlert("Registration successful", "Account created successfully", "Continue to login");
-                    Navigation.PushAsync(new LoginPage());
+
+
+
+                    DisplayAlert("Error", "Please enter a name", "OK");
                 }
+                else if (string.IsNullOrEmpty(userPassword))
+                {
+                    DisplayAlert("Error", "Please enter a password", "OK");
+                }
+                else if (string.IsNullOrEmpty(userEmail))
+                {
+                    DisplayAlert("Error", "University mail from participating universities required", "OK");
+
+                }
+                else if (string.IsNullOrEmpty(userUniversity))
+                {
+                    DisplayAlert("Error", "Please insert a university name", "OK");
+                }
+               /* else if (alreadyExists == "true")
+                {
+                    DisplayAlert("Error", "That email adress is already used", "OK");
+
+                } */
                 else
                 {
-                    DisplayAlert("Error", "Account could not be created", "OK");
-                }
-            }
+                    SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University,Roles,Locked) values(@userName, @userEmail, @userPassword, @userUniversity, @userRole, @userLocked)");
 
+                    /*This Part is to make the Data private*/
+                    insertCommand.Parameters.AddWithValue("@userName", userName);
+                    insertCommand.Parameters.AddWithValue("@userEmail", userEmail);
+                    insertCommand.Parameters.AddWithValue("@userPassword", userPassword);
+                    insertCommand.Parameters.AddWithValue("@userUniversity", userUniversity);
+                    insertCommand.Parameters.AddWithValue("@userRole", userRole);
+                    insertCommand.Parameters.AddWithValue("@userLocked", userLocked);
+
+                int row = objDBAccess.ExecuteQuery(insertCommand);
+                    if (row == 1)
+                    {
+                        DisplayAlert("Registration successful", "Account created successfully", "Continue to login");
+                        Navigation.PushAsync(new LoginPage());
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Account could not be created", "OK");
+                    }
+                }
+
+            }
         }
     }
-}
