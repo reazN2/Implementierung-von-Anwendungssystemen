@@ -38,6 +38,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             string userEmail = EntryUserEmail.Text;
             string userPassword = EntryUserPassword.Text;
+            //This bool was created so we can compare this bool with the Column Locked in the SQL Server. The user can only login if the Column 'Locked' in the Database is also false.
+            bool locked = false;
             if (string.IsNullOrEmpty(userEmail))
             {
                 DisplayAlert ("E-Mail missing", "Please insert a e-mail adress", "OK");
@@ -47,7 +49,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 DisplayAlert ("Passwort missing", "Please insert a password", "OK");
             } else
             {
-                string query = "Select * from Users Where Email= '" + userEmail + "' AND Password = '" + userPassword + "'";
+                //Looks if there is a User that has the same Email and Password as the ones a user just entered in the frontend. Also checks if the user is not deactivated.
+             string query = "Select * from Users Where Email= '" + userEmail + "' AND Password = '" + userPassword + "' AND Locked = '" + locked + "'";
 
                 objDBAccess.ReadDatathroughAdapter(query, dtUsers);
 
@@ -64,7 +67,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
                 {
-                    DisplayAlert ("Error", "E-Mail or Password wrong", "OK");
+                    DisplayAlert ("Error", "Could not log in. Either the email or password are wrong or your account was deactivated", "OK");
                 }
             }
         }
