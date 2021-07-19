@@ -28,10 +28,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userName = EntryUserName.Text;
             string userPassword = EntryUserPassword.Text;
             string userUniversity = EntryUserUniversity.Text;
-            bool   userLocked = false;
+            bool   userLocked = true;
             string userRole = "User";
             string userEmail;
-            string alreadyExists;
+            // string alreadyExists;
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
@@ -58,7 +58,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
 
           */
-
 
                //string userRole = "User";
                 if (string.IsNullOrEmpty(userName))

@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Implementierung_von_Anwendungssystemen.Views
 {
@@ -29,17 +30,29 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private void UpdateAccountInfo(object sender, EventArgs e)
         {
             string newUserName = EntryUserName.Text;
-            string newUserEmail = EntryUserEmail.Text;
+            string newUserEmail; 
             string newUserPassword = EntryUserPassword.Text;
             string newUserUniversity = EntryUserUniversity.Text;
 
-           if (string.IsNullOrEmpty(newUserName))
+            var email = EntryUserEmail.Text;
+            var emailPattern =
+                (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
+            if (Regex.IsMatch(email, emailPattern))
+            {
+                newUserEmail = EntryUserEmail.Text;
+            }
+            else
+            {
+                newUserEmail = "";
+            }
+
+            if (string.IsNullOrEmpty(newUserName))
             {
                 DisplayAlert("No Name", "Please insert a Name", "OK");
             }
             else if (string.IsNullOrEmpty(newUserEmail))
             {
-                DisplayAlert("No E-Mail", "Please insert a E-Mail", "OK");
+                DisplayAlert("Error", "University mail from participating universities required", "OK");
             }
             else if (string.IsNullOrEmpty(newUserPassword))
             {
