@@ -134,7 +134,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stop1 = true;
             stopwatch.Stop();
             // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
-            duration = stopwatch.Elapsed.TotalMinutes;
+            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
 
           //  string elapsedTime = String.Format("{0:00}:{1:00}.{3:00}");
          //    ts.Minutes, ts.Seconds, ts.
