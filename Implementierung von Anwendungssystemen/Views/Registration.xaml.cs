@@ -44,7 +44,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 userEmail = "";
             }
 
-          /* string query = "Select * from Users Where Email= '" + userEmail + "' AND Roles = '" + userRole + "'";
+          /*string query = "Select * from Users Where Email= '" + userEmail + "' AND Roles = '" + userRole + "'";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUsers);
 
