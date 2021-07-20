@@ -20,5 +20,6 @@ namespace Implementierung_von_Anwendungssystemen
         {
             await Shell.Current.GoToAsync("//LoginPage");
         }
+       
     }
 }
