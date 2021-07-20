@@ -21,8 +21,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private bool stop1;
         private bool dis1;
         double distance;
-        double duration;
-        double averageSpeed = 15;
+        string duration;
+        //double duration;
+        double averageSpeed;
         int caloriesBurned = 700;
         string dayTime = "14:56";
         //int Ide = LoginPage.newID;
@@ -134,7 +135,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stop1 = true;
             stopwatch.Stop();
             // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
-            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            // duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            TimeSpan ts = stopwatch.Elapsed;
+            duration = string.Format("hh:mm:ss",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds /10);
+            averageSpeed = distance * 1000 / 60;
 
           //  string elapsedTime = String.Format("{0:00}:{1:00}.{3:00}");
          //    ts.Minutes, ts.Seconds, ts.
