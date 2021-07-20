@@ -150,7 +150,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             // transferiere die daten in die DB 
 
-           /* SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned)");
+          /*  SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned)");
 
             //This Part is to make the Data private//
             insertCommand.Parameters.AddWithValue("@distance", distance);
