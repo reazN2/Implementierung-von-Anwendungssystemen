@@ -23,6 +23,10 @@
                 <StackLayout Grid.Row="4">
                     <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
                 </StackLayout>
+                <StackLayout Grid.Row="4">
+
+                </StackLayout>
+
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
