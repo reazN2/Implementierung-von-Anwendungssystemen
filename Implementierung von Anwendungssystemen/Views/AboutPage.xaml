@@ -53,7 +53,7 @@
                 <Entry x:Name="txtDestination" Placeholder="Destination"></Entry>
                     <Button x:Name="BtnLocation" Text="Get Distance" Clicked="BtnLocation_Clicked"/>
                 <Button x:Name="Btn" Text="Calculate" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="Btn_Clicked"></Button>
-                    <Label HorizontalTextAlignment="Center" x:Name="lblDistance"></Label>
+                    <Label HorizontalTextAlignment="Center" x:Name="lblDistance"></Label-->
             </StackLayout>
         </ScrollView>
     </Grid>
