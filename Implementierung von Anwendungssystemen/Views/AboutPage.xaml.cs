@@ -25,6 +25,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double averageSpeed = 15;
         int caloriesBurned = 700;
         string dayTime = "14:56";
+        //int Ide = LoginPage.newID;
 
 
 
@@ -140,6 +141,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
             insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
             insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
+            //insertCommand.Parameters.AddWithValue("@Ide", Ide);
             int row = objDBAccess.ExecuteQuery(insertCommand);
         }
         }

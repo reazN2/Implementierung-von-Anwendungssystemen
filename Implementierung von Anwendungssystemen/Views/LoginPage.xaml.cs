@@ -16,6 +16,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     {   
         /*Das Nächste ist static, damit man die Daten überall erreichen kann*/
         public static string id, email, university, password, name, roles;
+        public static int newID;
 
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
@@ -63,6 +64,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     name = dtUsers.Rows[0]["Name"].ToString();
                     roles = dtUsers.Rows[0]["Roles"].ToString();
                     objDBAccess.CloseConn();
+                    newID = Int32.Parse(id);
 
                     await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 } else
