@@ -24,6 +24,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             EntryUserEmail.Text = LoginPage.email;
             EntryUserPassword.Text = LoginPage.password;
             EntryUserUniversity.Text = LoginPage.university;
+
         }
         
 

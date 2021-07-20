@@ -26,7 +26,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double averageSpeed = 16;
         int caloriesBurned = 700;
         string dayTime = "14:56";
-        //int Ide = LoginPage.newID;
+
+        int Ide;
 
 
 
@@ -38,7 +39,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
-
+            Ide = LoginPage.newID;
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -150,7 +151,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             // transferiere die daten in die DB 
 
-          /*  SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned)");
+            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide)");
 
             //This Part is to make the Data private//
             insertCommand.Parameters.AddWithValue("@distance", distance);
@@ -158,8 +159,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
             insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
             insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
+            insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID); 
             //insertCommand.Parameters.AddWithValue("@Ide", Ide);
-            int row = objDBAccess.ExecuteQuery(insertCommand); */
+            int row = objDBAccess.ExecuteQuery(insertCommand); 
         }
         }
 
