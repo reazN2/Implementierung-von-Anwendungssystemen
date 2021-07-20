@@ -7,17 +7,26 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Data.SqlClient;
+
 
 namespace Implementierung_von_Anwendungssystemen.Views
 {
     public partial class AboutPage : ContentPage
     {
+        DBAccess objDBAccess = new DBAccess();
+
 
         Stopwatch stopwatch;
         private bool stop1;
         private bool dis1;
         double distance;
-        
+        int duration = 20;
+        double averageSpeed = 15;
+        int caloriesBurned = 700;
+        string dayTime = "14:56";
+
+
 
         public AboutPage()
         {
@@ -133,6 +142,15 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             // transferiere die daten in die DB 
 
+            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned)");
+
+            /*This Part is to make the Data private*/
+            insertCommand.Parameters.AddWithValue("@distance", distance);
+            insertCommand.Parameters.AddWithValue("@duration", duration);
+            insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
+            insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
+            insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
+            int row = objDBAccess.ExecuteQuery(insertCommand);
         }
         }
 
