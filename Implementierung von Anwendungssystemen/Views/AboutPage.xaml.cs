@@ -109,7 +109,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     btnCalculate.Text = "Resume";
                     stopwatch.Stop();
                     dis1 = false;
-
+                    
 
                 }
 
@@ -118,12 +118,22 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
-            private void BtnStop_Clicked(object sender, EventArgs e)
-            {
-                stop1 = true;
+        private void BtnStop_Clicked(object sender, EventArgs e)
+        {
+            stop1 = true;
             stopwatch.Stop();
+            Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
+            TimeSpan ts = stopwatch.Elapsed;
 
-            }
+          //  string elapsedTime = String.Format("{0:00}:{1:00}.{3:00}");
+         //    ts.Minutes, ts.Seconds, ts.
+
+        
+
+
+            // transferiere die daten in die DB 
+
+        }
         }
 
     }
