@@ -27,7 +27,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
         int caloriesBurned = 700;
         string dayTime = "14:56";
 
-        int Ide;
 
 
 
@@ -39,7 +38,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
-            Ide = LoginPage.newID;
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
