@@ -38,10 +38,12 @@
                VerticalOptions="CenterAndExpand">
                 </Label>
 
-                <Button x:Name="btnStart" Clicked="btnStart_Clicked" Text="Start"></Button>
-                <Button x:Name="btnStop" Text="Stop" Clicked="btnStop_Clicked"></Button>
+                <!-- <Button x:Name="btnStart" Text="Start" Clicked="btnStart_Clicked" ></Button>-->
+                <Button x:Name="BtnStop" Text="Stop" Clicked="BtnStop_Clicked"></Button> 
+                <Button x:Name="btnCalculate" Text="Start Tracking" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="BtnCalc_Clicked"></Button>
                 <Button x:Name="btnReset" Text="Reset" Clicked="btnReset_Clicked"></Button>
-                
+                <Label HorizontalTextAlignment="Start" VerticalTextAlignment="Start" x:Name="stringDistance"
+                       FontSize="Large"></Label>
                        
 
                <!-- </Label>
@@ -50,8 +52,11 @@
                 <Entry x:Name="txtSource" Placeholder="Source"></Entry>
                 <Entry x:Name="txtDestination" Placeholder="Destination"></Entry>
                     <Button x:Name="BtnLocation" Text="Get Distance" Clicked="BtnLocation_Clicked"/>
-                <Button x:Name="Btn" Text="Calculate" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="Btn_Clicked"></Button>
-                <Label HorizontalTextAlignment="Center" x:Name="lblDistance"></Label> -->
+                
+                <Label HorizontalTextAlignment="Center" x:Name="lblDistance"></Label>
+                
+                // try for calc <Button x:Name="BtnCal" Text="Calcul" Clicked="BtnCal_Clicked">
+                -->
 
             </StackLayout>
         </ScrollView>

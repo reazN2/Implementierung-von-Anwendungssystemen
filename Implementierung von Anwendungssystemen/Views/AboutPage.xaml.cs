@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
     {
 
         Stopwatch stopwatch;
+        private bool stop1;
+        private bool dis1;
+        double distance;
+        
 
         public AboutPage()
         {
@@ -20,10 +25,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stopwatch = new Stopwatch();
 
             lblStopwatch.Text = "00:00";
+            stringDistance.Text = "0";
 
         }
 
-        private void btnStart_Clicked(object sender, EventArgs e)
+        /*private void btnStart_Clicked(object sender, EventArgs e)
         {
             if (!stopwatch.IsRunning)
             {
@@ -49,77 +55,135 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
 
-        }
-
-        private void btnStop_Clicked(object sender, EventArgs e)
-        {
-            btnStart.Text = "Resume";
-            stopwatch.Stop();
-        }
-
-        private void btnReset_Clicked(object sender, EventArgs e)
-        {
-            lblStopwatch.Text = "00:00";
-            btnStart.Text = "Start";
-            stopwatch.Reset();
-        }
- 
-
-
-
-
-
-/*   async void Button_Clicked(object sender, EventArgs e)
-   {
-       var result = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(3)));
-
-       resultLocation.Text = $"la-t:{result.Latitude}, lng: {result.Longitude}";
-
-
-}
-
-     private  async void BtnLocation_Clicked(object sender, System.EventArgs e)
-   {
-       try
-       {
-           var source = txtSource.Text;
-           var sourceLocation = await Geocoding.GetLocationsAsync(source);
-           var destination = txtDestination.Text;
-           var destinationLocation = await Geocoding.GetLocationsAsync(destination);
-           if (sourceLocation != null)
-           {
-               var sourceLocations = sourceLocation?.FirstOrDefault();
-               var destinationLocations = destinationLocation?.FirstOrDefault();
-               Location sourceCoordinates = new Location(sourceLocations.Latitude, sourceLocations.Longitude);
-               Location destinationCoordinates = new Location(destinationLocations.Latitude, destinationLocations.Longitude);
-               double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
-               lblDistance.Text = distance.ToString();
-           }
-
-
-
-       }
-       catch (FeatureNotSupportedException fnsEx)
-       {
-           await DisplayAlert("Faild", fnsEx.Message, "OK");
-       }
-       catch (PermissionException pEx)
-       {
-           await DisplayAlert("Faild", pEx.Message, "OK");
-       }
-       catch (Exception ex)
-       {
-           await DisplayAlert("Faild", ex.Message, "OK");
-       }
-
-   }
-*/
-private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        } */
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
 
-        private void Btn_Clicked(object sender, EventArgs e)
+
+        private void btnReset_Clicked(object sender, EventArgs e)
+        {
+            lblStopwatch.Text = "00:00";
+            // btnStart.Text = "Start";
+            stopwatch.Reset();
+            distance = 0;
+            stop1 = false;
+
+         
+        }
+
+        private async void BtnCalc_Clicked(object sender, EventArgs e)
+        {
+            stop1 = false;
+            dis1 = true;
+            stopwatch.Start();
+            Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+            {
+                lblStopwatch.Text = stopwatch.Elapsed.ToString();
+                return true;
+
+            });
+            var StartLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
+
+            var CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
+
+            while  (dis1 == true) {
+
+
+                var gerade = CurrentLocation;
+
+                CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
+                distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
+                stringDistance.Text = distance.ToString("0.####"+"km") ;
+                
+
+                //Console.WriteLine(distance.ToString());
+
+
+
+
+                if (stop1 == true)
+                {
+
+                    btnCalculate.Text = "Resume";
+                    stopwatch.Stop();
+                    dis1 = false;
+
+
+                }
+
+            }
+
+
+        }
+
+            private void BtnStop_Clicked(object sender, EventArgs e)
+            {
+                stop1 = true;
+            stopwatch.Stop();
+
+            }
+        }
+
+    }
+
+ 
+    // ^^ dieser teil für Calculate distance? wie noch umschreiben mit bool?
+
+
+
+
+    /*   async void Button_Clicked(object sender, EventArgs e)
+       {
+           var result = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Default, TimeSpan.FromSeconds(3)));
+
+           resultLocation.Text = $"la-t:{result.Latitude}, lng: {result.Longitude}";
+
+
+    }
+
+         private  async void BtnLocation_Clicked(object sender, System.EventArgs e)
+       {
+           try
+           {
+               var source = txtSource.Text;
+               var sourceLocation = await Geocoding.GetLocationsAsync(source);
+               var destination = txtDestination.Text;
+               var destinationLocation = await Geocoding.GetLocationsAsync(destination);
+               if (sourceLocation != null)
+               {
+                   var sourceLocations = sourceLocation?.FirstOrDefault();
+                   var destinationLocations = destinationLocation?.FirstOrDefault();
+                   Location sourceCoordinates = new Location(sourceLocations.Latitude, sourceLocations.Longitude);
+                   Location destinationCoordinates = new Location(destinationLocations.Latitude, destinationLocations.Longitude);
+                   double distance = Location.CalculateDistance(sourceCoordinates, destinationCoordinates, DistanceUnits.Kilometers);
+                   lblDistance.Text = distance.ToString();
+               }
+
+
+
+           }
+           catch (FeatureNotSupportedException fnsEx)
+           {
+               await DisplayAlert("Faild", fnsEx.Message, "OK");
+           }
+           catch (PermissionException pEx)
+           {
+               await DisplayAlert("Faild", pEx.Message, "OK");
+           }
+           catch (Exception ex)
+           {
+               await DisplayAlert("Faild", ex.Message, "OK");
+           }
+
+       }
+    */
+
+ 
+
+
+       /* private void Btn_Clicked(object sender, EventArgs e)
         {
 
        
@@ -247,4 +311,4 @@ private async void ToolbarItem_Clicked(object sender, EventArgs e)
         }
         return length * EARTH_RADIUS;
     }
-}
+} */
