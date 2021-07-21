@@ -16,12 +16,19 @@ namespace Implementierung_von_Anwendungssystemen.Views
     public partial class ManualDistance : ContentPage
     {
         DBAccess objDBAccess = new DBAccess();
+        string name;
+        public void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var name = MainPicker.Items[MainPicker.SelectedIndex];
+
+        }
         public ManualDistance()
         {
             InitializeComponent();
             MainPicker.Items.Add("Running");
+            MainPicker.Items.Add("Swimming");
             MainPicker.Items.Add("Cycling");
-
         }
 
         private void AddDistance_Clicked(object sender, EventArgs e)
@@ -44,7 +51,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             int value3;
             string stringManualCaloriesBurned = EntryManualCaloriesBurned.Text;
-            manualTypeOfSport = EntryManualTypeOfSport.Text;
+            manualTypeOfSport = MainPicker.Items[MainPicker.SelectedIndex];
             manualDayTime = EntryManualTimeOfTheDay.Text;
 
             if (string.IsNullOrEmpty(stringManualDistance))
@@ -94,6 +101,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 manualAverageSpeed = float.Parse(stringManualAverageSpeed);
                 manualCaloriesBurned = int.Parse(stringManualCaloriesBurned);
 
+
                 SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance,TypeOfSport,DayTime,Duration,AverageSpeed,CaloriesBurned,Id) values(@manualDistance, @manualTypeOfSport, @manualDayTime, @manualDuration, @manualAverageSpeed, @manualCaloriesBurned, @Ide)");
 
                 /*This Part is to make the Data private*/
@@ -109,11 +117,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)
                 {
-                    DisplayAlert("Workout added!", "You successfully added a workout", "Continue");
+                    DisplayAlert("Activity added!", "You successfully added an activity", "Continue");
                 }
                 else
                 {
-                    DisplayAlert("Error", "Workout could not be added", "OK");
+                    DisplayAlert("Error", "Activity could not be added", "OK");
                 }
 
             }
@@ -121,10 +129,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
-        private void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var name = MainPicker.Items[MainPicker.SelectedIndex];
-            DisplayAlert(name, "Selected Sport", "OK");
-        }
+
     }
 }
