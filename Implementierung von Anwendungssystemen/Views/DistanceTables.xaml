@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Implementierung_von_Anwendungssystemen.Views.DistanceTables">
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout>
+            <Label Text="Name:" FontSize="Medium"/>
+            <Entry Placeholder="Name" FontSize="Body" x:Name="userDistanceView" ClearButtonVisibility="WhileEditing"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Name:" FontSize="Medium"/>
+            <Entry Placeholder="Name" FontSize="Body" x:Name="userTypeOfSportView" ClearButtonVisibility="WhileEditing"/>
+        </StackLayout>
+        <StackLayout>
+            <Label Text="Name:" FontSize="Medium"/>
+            <Entry Placeholder="Name" FontSize="Body" x:Name="userDayTime" ClearButtonVisibility="WhileEditing"/>
+        </StackLayout>
+            <StackLayout>
+                <Label Text="Name:" FontSize="Medium"/>
+                <Entry Placeholder="Name" FontSize="Body" x:Name="userDurationView" ClearButtonVisibility="WhileEditing"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Name:" FontSize="Medium"/>
+                <Entry Placeholder="Name" FontSize="Body" x:Name="userAverageSpeedView" ClearButtonVisibility="WhileEditing"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Name:" FontSize="Medium"/>
+                <Entry Placeholder="Name" FontSize="Body" x:Name="usercaloriesBurnedView" ClearButtonVisibility="WhileEditing"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

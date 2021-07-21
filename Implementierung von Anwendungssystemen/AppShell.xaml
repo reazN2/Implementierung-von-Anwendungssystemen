@@ -91,11 +91,11 @@
     <FlyoutItem Title="Settings" Icon="icon_feed.png">
         <ShellContent Route="Settings" ContentTemplate="{DataTemplate local:Einstellungen}" />
     </FlyoutItem>
-    <FlyoutItem Title="Distanzen eintragen" Icon="icon_distanz.png">
-        <ShellContent Route="Distanzen" ContentTemplate="{DataTemplate local:Distanzen}" />
-    </FlyoutItem>
     <FlyoutItem Title="Add Distance manually" Icon="icon_distanz.png">
         <ShellContent Route="ManualDistance" ContentTemplate="{DataTemplate local:ManualDistance}" />
+    </FlyoutItem>
+    <FlyoutItem Title="View your recent activity" Icon="icon_distanz.png">
+        <ShellContent Route="DistanceTables" ContentTemplate="{DataTemplate local:DistanceTables}" />
     </FlyoutItem>
 
 
