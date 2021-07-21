@@ -21,8 +21,9 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                 <Label Text="University:" FontSize="Medium"/>
-                <Entry Placeholder="University" FontSize="Body" x:Name="EntryUserUniversity" ClearButtonVisibility="WhileEditing"/>
+                <Picker x:Name="PickerUniversitySettings" SelectedIndexChanged="PickerUniversitySettings_SelectedIndexChanged"  Title="Pick your University"></Picker>
                 </StackLayout>
+
                 <StackLayout Grid.Row="4">
                     <Button VerticalOptions="Center" Text="Save Changes" Clicked="UpdateAccountInfo"/>
                 </StackLayout>

@@ -38,7 +38,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
-            averageSpeed1.Text = "0";
+            //averageSpeed1.Text = "0";
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
             averageSpeed = distance / 60;
-                averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
+                //averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
 
 
         }
