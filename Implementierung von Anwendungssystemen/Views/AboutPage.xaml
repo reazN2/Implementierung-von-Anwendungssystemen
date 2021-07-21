@@ -41,7 +41,7 @@
                 <!-- <Button x:Name="btnStart" Text="Start" Clicked="btnStart_Clicked" ></Button>-->
                 <Button x:Name="BtnStop" Text="Stop" Clicked="BtnStop_Clicked" BackgroundColor="Red"></Button> 
                 <Button x:Name="btnCalculate" Text="Start Tracking" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="BtnCalc_Clicked" BackgroundColor="Green"></Button>
-                <Button x:Name="btnReset" Text="Reset" Clicked="btnReset_Clicked"></Button>
+                <Button x:Name="btnReset" Text="Finish Activity" Clicked="btnReset_Clicked"></Button>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Start" x:Name="stringDistance"
                        FontSize="Large" TextColor="DarkOrange" FontAttributes="Italic"></Label>
                 <Label x:Name="averageSpeed1" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large"></Label>

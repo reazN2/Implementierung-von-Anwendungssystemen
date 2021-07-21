@@ -33,7 +33,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="4">
-                    <Button x:Name = "AddDistance" Text="Add Training" Clicked="AddDistance_Clicked"/>
+                    <Button x:Name = "AddDistance" Text="Add Activity" Clicked="AddDistance_Clicked"/>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

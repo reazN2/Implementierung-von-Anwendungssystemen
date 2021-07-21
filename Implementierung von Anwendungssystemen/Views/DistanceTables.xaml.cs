@@ -19,19 +19,26 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
+
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(ManualDistance)}");
+        }
+
         public DistanceTables()
         {
             InitializeComponent();
 
             //Looks if there is a User that has the same Email and Password as the ones a user just entered in the frontend. Also checks if the user is not deactivated.
-            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' and Order By  DistanceId";
+            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId DESC";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
 
 
             if (dtUserDistances.Rows.Count > 0)
             {
-                distanceView = dtUserDistances.Rows[dtUserDistances.Rows.Count]["Distance"].ToString();
+                distanceView = dtUserDistances.Rows[0]["Distance"].ToString();
                 userDistanceView.Text = distanceView;
                 typeOfSportView = dtUserDistances.Rows[0]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;
