@@ -139,6 +139,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stopwatch.Stop();
             // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
             duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            
+
             /*  TimeSpan ts = stopwatch.Elapsed;
               duration = string.Format("hh:mm:ss",
                   ts.Hours, ts.Minutes, ts.Seconds,
