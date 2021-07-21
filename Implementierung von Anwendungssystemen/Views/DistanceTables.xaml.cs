@@ -19,6 +19,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
+
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(ManualDistance)}");
+        }
+
         public DistanceTables()
         {
             InitializeComponent();

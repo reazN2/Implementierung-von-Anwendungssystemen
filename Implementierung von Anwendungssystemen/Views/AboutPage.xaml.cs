@@ -26,7 +26,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double averageSpeed = 16;
         int caloriesBurned = 700;
         string dayTime = "14:56";
-
+        string typeOfSport = "Running";
 
         
 
@@ -81,7 +81,22 @@ namespace Implementierung_von_Anwendungssystemen.Views
             distance = 0;
             stop1 = false;
 
-         
+
+            // transferiere die daten in die DB 
+            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
+
+            //This Part is to make the Data private//
+            insertCommand.Parameters.AddWithValue("@distance", distance);
+            insertCommand.Parameters.AddWithValue("@duration", duration);
+            insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
+            insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
+            insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
+            insertCommand.Parameters.AddWithValue("@typeOfSport", typeOfSport);
+            insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
+            int row = objDBAccess.ExecuteQuery(insertCommand);
+
+
+
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
@@ -153,18 +168,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
         
 
 
-            // transferiere die daten in die DB 
+           
 
-            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide)");
-
-            //This Part is to make the Data private//
-            insertCommand.Parameters.AddWithValue("@distance", distance);
-            insertCommand.Parameters.AddWithValue("@duration", duration);
-            insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
-            insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
-            insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
-            insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID); 
-            int row = objDBAccess.ExecuteQuery(insertCommand); 
         }
         }
 
