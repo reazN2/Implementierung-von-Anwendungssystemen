@@ -31,20 +31,20 @@ namespace Implementierung_von_Anwendungssystemen.Views
             bool   userLocked = false;
             string userRole = "User";
             string userEmail;
-            // string alreadyExists;
+            string alreadyExists;
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
             if (Regex.IsMatch(email, emailPattern))
             {
-                userEmail = EntryUserEmail.Text;
+                userEmail = email;
             }
             else
             {
                 userEmail = "";
             }
 
-          /* string query = "Select * from Users Where Email= '" + userEmail + "' AND Roles = '" + userRole + "'";
+          string query = "Select * from Users Where Email= '" + userEmail + "'";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUsers);
 
@@ -57,9 +57,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 alreadyExists = "false";
             }
 
-          */
-
-               //string userRole = "User";
+        
                 if (string.IsNullOrEmpty(userName))
                 {
 
@@ -80,11 +78,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 {
                     DisplayAlert("Error", "Please insert a university name", "OK");
                 }
-               /* else if (alreadyExists == "true")
+               else if (alreadyExists == "true")
                 {
                     DisplayAlert("Error", "That email adress is already used", "OK");
 
-                } */
+                } 
                 else
                 {
                     SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University,Roles,Locked) values(@userName, @userEmail, @userPassword, @userUniversity, @userRole, @userLocked)");

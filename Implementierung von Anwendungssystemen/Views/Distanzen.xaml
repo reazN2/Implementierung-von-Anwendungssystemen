@@ -30,5 +30,21 @@
     -->
   </ListView>
 
+    <StackLayout>
+
+        <Entry Placeholder="Sportart"
+           VerticalOptions="Start"
+           PlaceholderColor="Black"/>
+
+        <Entry Placeholder="Zeit"
+           VerticalOptions="Start"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"/>
+
+        <Entry Placeholder="Distanz"
+           VerticalOptions="Start"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"/>
+    </StackLayout>
 
 </ContentPage>

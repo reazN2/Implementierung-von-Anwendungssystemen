@@ -14,6 +14,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     {
         public ObservableCollection<string> Items { get; set; }
 
+
         public Distanzen()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             MyListView.ItemsSource = Items;
         }
-
 
         async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
         {
