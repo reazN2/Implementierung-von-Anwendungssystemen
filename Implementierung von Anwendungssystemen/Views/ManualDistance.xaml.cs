@@ -19,6 +19,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public ManualDistance()
         {
             InitializeComponent();
+            MainPicker.Items.Add("Running");
+            MainPicker.Items.Add("Cycling");
 
         }
 
@@ -75,6 +77,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
 
 
+        }
+
+        private void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var name = MainPicker.Items[MainPicker.SelectedIndex];
+            DisplayAlert(name, "Selected Sport", "OK");
         }
     }
 }

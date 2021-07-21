@@ -17,6 +17,7 @@
                 <StackLayout Grid.Row="1">
                     <Label Text="Type of Sport" FontSize="Small"/>
                     <Entry Placeholder="Type Of Sport" FontSize="16" x:Name="EntryManualTypeOfSport" ClearButtonVisibility="WhileEditing"/>
+                    <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged"></Picker>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                     <Label Text="Time of Day" FontSize="Small"/>
