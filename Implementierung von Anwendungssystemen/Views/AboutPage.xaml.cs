@@ -28,7 +28,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         string dayTime = "14:56";
         //int Ide = LoginPage.newID;
 
-
+        
 
 
         public AboutPage()
@@ -108,7 +108,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
                 distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
                 stringDistance.Text = distance.ToString("0.####"+"km") ;
-                
+
 
                 //Console.WriteLine(distance.ToString());
 
@@ -121,9 +121,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     btnCalculate.Text = "Resume";
                     stopwatch.Stop();
                     dis1 = false;
+                   
                     
 
                 }
+
+                
+               
 
             }
 
