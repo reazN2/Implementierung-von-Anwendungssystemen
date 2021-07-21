@@ -25,7 +25,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Label Text="Average Speed" FontSize="Small"/>
-                    <Entry Placeholder="Average Speed" FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
+                    <Entry Placeholder="Average Speed " FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Label Text="Calories Burned" FontSize="Small"/>
