@@ -17,6 +17,7 @@ namespace Implementierung_von_Anwendungssystemen.ViewModels
         public Command AddItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
+
         public ItemsViewModel()
         {
             Title = "Browse";

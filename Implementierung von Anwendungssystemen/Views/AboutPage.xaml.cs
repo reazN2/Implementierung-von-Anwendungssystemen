@@ -23,7 +23,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double distance;
         //string duration;
         double duration;
-        double averageSpeed = 16;
+        double averageSpeed;
         int caloriesBurned = 700;
         string dayTime = "14:56";
         string typeOfSport = "Running";
@@ -38,6 +38,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
+            averageSpeed1.Text = "0";
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -97,6 +98,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
 
+
+
+            averageSpeed = distance / 60;
+                averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
+
+
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
@@ -122,7 +129,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
                 distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
                 stringDistance.Text = distance.ToString("0.####"+"km") ;
+                
 
+                
 
                 //Console.WriteLine(distance.ToString());
 
@@ -168,7 +177,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
         
 
 
-           
 
         }
         }
