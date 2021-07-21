@@ -23,7 +23,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double distance;
         //string duration;
         double duration;
-        double averageSpeed = 16;
+        double averageSpeed;
         int caloriesBurned = 700;
         string dayTime = "14:56";
 
@@ -38,6 +38,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
+            averageSpeed1.Text = "0";
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -81,7 +82,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
             distance = 0;
             stop1 = false;
 
-         
+
+
+            averageSpeed = distance / 60;
+                averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
+
+
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
@@ -107,7 +113,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
                 distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
                 stringDistance.Text = distance.ToString("0.####"+"km") ;
+                
 
+                
 
                 //Console.WriteLine(distance.ToString());
 
@@ -154,7 +162,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
             // transferiere die daten in die DB 
-
+/*
             SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide)");
 
             //This Part is to make the Data private//
@@ -164,7 +172,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
             insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
             insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID); 
-            int row = objDBAccess.ExecuteQuery(insertCommand); 
+            int row = objDBAccess.ExecuteQuery(insertCommand);  */
         }
         }
 

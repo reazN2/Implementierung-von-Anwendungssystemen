@@ -44,6 +44,7 @@
                 <Button x:Name="btnReset" Text="Reset" Clicked="btnReset_Clicked"></Button>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Start" x:Name="stringDistance"
                        FontSize="Large" TextColor="DarkOrange" FontAttributes="Italic"></Label>
+                <Label x:Name="averageSpeed1" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large"></Label>
                        
 
                <!-- </Label>

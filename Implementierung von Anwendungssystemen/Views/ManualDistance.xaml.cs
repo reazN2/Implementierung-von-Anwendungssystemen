@@ -124,7 +124,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             var name = MainPicker.Items[MainPicker.SelectedIndex];
-            DisplayAlert(name, "Selected Sport", "OK");
+            DisplayAlert(name, "Selected", "OK");
         }
     }
 }
