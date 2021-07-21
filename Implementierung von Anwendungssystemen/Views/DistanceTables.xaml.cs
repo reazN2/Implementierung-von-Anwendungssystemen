@@ -24,13 +24,14 @@ namespace Implementierung_von_Anwendungssystemen.Views
             InitializeComponent();
 
             //Looks if there is a User that has the same Email and Password as the ones a user just entered in the frontend. Also checks if the user is not deactivated.
-            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "'";
+            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' and Order By  DistanceId";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
 
+
             if (dtUserDistances.Rows.Count > 0)
             {
-                distanceView = dtUserDistances.Rows[0]["Distance"].ToString();
+                distanceView = dtUserDistances.Rows[dtUserDistances.Rows.Count]["Distance"].ToString();
                 userDistanceView.Text = distanceView;
                 typeOfSportView = dtUserDistances.Rows[0]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;

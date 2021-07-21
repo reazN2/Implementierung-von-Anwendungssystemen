@@ -24,6 +24,12 @@
                 <Label Text="Name:" FontSize="Medium"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="userAverageSpeedView" ClearButtonVisibility="WhileEditing"/>
             </StackLayout>
+
+            <StackLayout>
+                <Label Text="Name:" FontSize="Medium"/>
+                <ListView x:Name="TableLastRun"/>
+            </StackLayout>
+            
             <StackLayout>
                 <Label Text="Name:" FontSize="Medium"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="usercaloriesBurnedView" ClearButtonVisibility="WhileEditing"/>
