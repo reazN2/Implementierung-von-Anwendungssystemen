@@ -5,33 +5,27 @@
     <ContentPage.Content>
         <StackLayout>
         <StackLayout>
-            <Label Text="Name:" FontSize="Medium"/>
+            <Label Text="Distance:" FontSize="Medium"/>
             <Entry Placeholder="Name" FontSize="Body" x:Name="userDistanceView" ClearButtonVisibility="WhileEditing"/>
         </StackLayout>
         <StackLayout>
-            <Label Text="Name:" FontSize="Medium"/>
+            <Label Text="Type of Sport:" FontSize="Medium"/>
             <Entry Placeholder="Name" FontSize="Body" x:Name="userTypeOfSportView" ClearButtonVisibility="WhileEditing"/>
         </StackLayout>
         <StackLayout>
-            <Label Text="Name:" FontSize="Medium"/>
+            <Label Text="Time of Day:" FontSize="Medium"/>
             <Entry Placeholder="Name" FontSize="Body" x:Name="userDayTime" ClearButtonVisibility="WhileEditing"/>
         </StackLayout>
             <StackLayout>
-                <Label Text="Name:" FontSize="Medium"/>
+                <Label Text="Duration:" FontSize="Medium"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="userDurationView" ClearButtonVisibility="WhileEditing"/>
             </StackLayout>
             <StackLayout>
-                <Label Text="Name:" FontSize="Medium"/>
+                <Label Text="AverageSpeed" FontSize="Medium"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="userAverageSpeedView" ClearButtonVisibility="WhileEditing"/>
             </StackLayout>
-
             <StackLayout>
-                <Label Text="Name:" FontSize="Medium"/>
-                <ListView x:Name="TableLastRun"/>
-            </StackLayout>
-            
-            <StackLayout>
-                <Label Text="Name:" FontSize="Medium"/>
+                <Label Text="Calories Burned" FontSize="Medium"/>
                 <Entry Placeholder="Name" FontSize="Body" x:Name="usercaloriesBurnedView" ClearButtonVisibility="WhileEditing"/>
             </StackLayout>
         </StackLayout>
