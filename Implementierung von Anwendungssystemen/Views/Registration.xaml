@@ -21,10 +21,9 @@
                     <Entry Placeholder="University" FontSize="16" x:Name="EntryUserUniversity" />
                 </StackLayout>
                 <StackLayout Grid.Row="4">
-                    <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
+                        <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
-
                 </StackLayout>
 
             </StackLayout>
