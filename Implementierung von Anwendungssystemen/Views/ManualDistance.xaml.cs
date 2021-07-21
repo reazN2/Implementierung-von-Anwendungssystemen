@@ -15,7 +15,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ManualDistance : ContentPage
     {
-
+        DBAccess objDBAccess = new DBAccess();
         public ManualDistance()
         {
             InitializeComponent();
@@ -25,53 +25,95 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private void AddDistance_Clicked(object sender, EventArgs e)
         {
             float manualDistance;
-            string manualTypeOfSport = EntryManualTypeOfSport.Text;
-            string manualDayTime = EntryManualTimeOfTheDay.Text;
+            string manualTypeOfSport;
+            string manualDayTime;
             double manualDuration;
             float manualAverageSpeed;
             int manualCaloriesBurned;
 
             float value0;
             string stringManualDistance = EntryManualDistance.Text;
-            if (float.TryParse(stringManualDistance, out value0))
-            {
-                manualDistance = float.Parse(stringManualDistance);
-            }
-            else
-            {
-                DisplayAlert("Error", "Please insert the distance only as numbers", "OK");
-            }
-            double value1;
+
+            float value1;
             string stringManualDuration = EntryManualDuration.Text;
-            if (double.TryParse(stringManualDuration, out value1))
-            {
-                manualDuration = double.Parse(stringManualDuration);
-            }
-            else
-            {
-                DisplayAlert("Error", "Please insert the duration only as numbers", "OK");
-            }
 
             float value2;
             string stringManualAverageSpeed = EntryManualAverageSpeed.Text;
-            if (float.TryParse(stringManualDuration, out value2))
-            {
-                manualAverageSpeed = float.Parse(stringManualDuration);
-            }
-            else
-            {
-                DisplayAlert("Error", "Please insert the the average speed only as numbers", "OK");
-            }
 
             int value3;
             string stringManualCaloriesBurned = EntryManualCaloriesBurned.Text;
-            if (int.TryParse(stringManualCaloriesBurned, out value3))
+            manualTypeOfSport = EntryManualTypeOfSport.Text;
+            manualDayTime = EntryManualTimeOfTheDay.Text;
+
+            if (string.IsNullOrEmpty(stringManualDistance))
             {
-                manualCaloriesBurned = int.Parse(stringManualDuration);
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            } 
+            else if (string.IsNullOrEmpty(stringManualDistance))
+            {
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            }
+            else if (string.IsNullOrEmpty(stringManualDistance))
+            {
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            }
+            else if (string.IsNullOrEmpty(stringManualDistance))
+            {
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            }
+            else if (string.IsNullOrEmpty(stringManualDistance))
+            {
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            }
+            else if (string.IsNullOrEmpty(stringManualDistance))
+            {
+                DisplayAlert("No distance", "You have to add a distance", "OK");
+            }
+            else if (!float.TryParse(stringManualDistance, out value0))
+            {
+                DisplayAlert("Error", "Please insert the distance only as numbers", "OK");
+            }
+            else if (!float.TryParse(stringManualDuration, out value1))
+            {
+                DisplayAlert("Error", "Please insert the duration only as numbers", "OK");
+            }
+            else if (!float.TryParse(stringManualAverageSpeed, out value2))
+                {
+                DisplayAlert("Error", "Please insert the the average speed only as numbers", "OK");
+            }
+            else if (!int.TryParse(stringManualCaloriesBurned, out value3))
+            {
+                DisplayAlert("Error", "Please insert the the calories burned only as numbers", "OK");
             }
             else
             {
-                DisplayAlert("Error", "Please insert the the calories burned only as numbers", "OK");
+                manualDistance = float.Parse(stringManualDistance);
+                manualDuration = float.Parse(stringManualDuration);
+                manualAverageSpeed = float.Parse(stringManualAverageSpeed);
+                manualCaloriesBurned = int.Parse(stringManualCaloriesBurned);
+
+                SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance,TypeOfSport,DayTime,Duration,AverageSpeed,CaloriesBurned,Id) values(@manualDistance, @manualTypeOfSport, @manualDayTime, @manualDuration, @manualAverageSpeed, @manualCaloriesBurned, @Ide)");
+
+                /*This Part is to make the Data private*/
+                insertCommand.Parameters.AddWithValue("@manualDistance", manualDistance);
+                insertCommand.Parameters.AddWithValue("@manualTypeOfSport", manualTypeOfSport);
+                insertCommand.Parameters.AddWithValue("@manualDayTime", manualDayTime);
+                insertCommand.Parameters.AddWithValue("@manualDuration", manualDuration);
+                insertCommand.Parameters.AddWithValue("@manualAverageSpeed", manualAverageSpeed);
+                insertCommand.Parameters.AddWithValue("@manualCaloriesBurned", manualCaloriesBurned);
+                insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
+
+
+                int row = objDBAccess.ExecuteQuery(insertCommand);
+                if (row == 1)
+                {
+                    DisplayAlert("Workout added!", "You successfully added a workout", "Continue");
+                }
+                else
+                {
+                    DisplayAlert("Error", "Workout could not be added", "OK");
+                }
+
             }
 
 
