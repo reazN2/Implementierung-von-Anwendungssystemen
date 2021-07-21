@@ -164,7 +164,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
             insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
             insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID); 
-            //insertCommand.Parameters.AddWithValue("@Ide", Ide);
             int row = objDBAccess.ExecuteQuery(insertCommand); 
         }
         }
