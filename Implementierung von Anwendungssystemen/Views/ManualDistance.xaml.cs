@@ -37,7 +37,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             float manualDistance;
             string manualTypeOfSport;
-            
+            string manualDayTime;
             double manualDuration;
             float manualAverageSpeed;
             int manualCaloriesBurned;
@@ -54,8 +54,19 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             int value3;
             string stringManualCaloriesBurned = EntryManualCaloriesBurned.Text;
-            manualTypeOfSport = MainPicker.Items[MainPicker.SelectedIndex];
-           
+
+            manualDayTime = timePicker.Time.ToString(@"hh\:mm");
+
+            if (MainPicker.SelectedIndex < 0)
+            {
+                manualTypeOfSport = "";
+
+            }
+            else
+            {
+                manualTypeOfSport = MainPicker.Items[MainPicker.SelectedIndex];
+            }
+
 
             if (string.IsNullOrEmpty(stringManualDistance))
             {
@@ -63,7 +74,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             } 
             else if (string.IsNullOrEmpty(stringManualDuration))
             {
-                DisplayAlert("No duration", "You have to add a duration in [min]", "OK");
+                DisplayAlert("No duration", "You have to add a duration in [HH:mm:ss]", "OK");
             }
             else if (string.IsNullOrEmpty(stringManualAverageSpeed))
             {
@@ -77,7 +88,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 DisplayAlert("No Type of Sport", "You have to select one of the given Opportunities", "OK");
             }
-            
+            else if (string.IsNullOrEmpty(manualDayTime))
+            {
+                DisplayAlert("No DayTime", "You have to add the time in the following format [hh:mm]", "OK");
+            }
 
             else if (!float.TryParse(stringManualDistance, out value0))
             {
@@ -95,6 +109,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 DisplayAlert("Error", "Please insert the the calories burned only in [Kcal]", "OK");
             }
+
             else
             {
                 manualDistance = float.Parse(stringManualDistance);
@@ -108,6 +123,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 /*This Part is to make the Data private*/
                 insertCommand.Parameters.AddWithValue("@manualDistance", manualDistance);
                 insertCommand.Parameters.AddWithValue("@manualTypeOfSport", manualTypeOfSport);
+                insertCommand.Parameters.AddWithValue("@manualDayTime", manualDayTime);
                 insertCommand.Parameters.AddWithValue("@manualDuration", manualDuration);
                 insertCommand.Parameters.AddWithValue("@manualAverageSpeed", manualAverageSpeed);
                 insertCommand.Parameters.AddWithValue("@manualCaloriesBurned", manualCaloriesBurned);

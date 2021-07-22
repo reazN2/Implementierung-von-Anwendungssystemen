@@ -20,6 +20,20 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
 
+        int detailIndex = 0;
+        private void PlusButton_Clicked(object sender, EventArgs e)
+        {
+            if(detailIndex < dtUserDistances.Rows.Count -1)
+                detailIndex++;
+            refreshDetails();
+        }
+
+        private void MinusButton_Clicked(object sender, EventArgs e)
+        {
+            if (detailIndex > 0)
+                detailIndex--;
+            refreshDetails();
+        }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
@@ -31,34 +45,39 @@ namespace Implementierung_von_Anwendungssystemen.Views
             InitializeComponent();
 
             //Looks if there is a User that has the same Email and Password as the ones a user just entered in the frontend. Also checks if the user is not deactivated.
+            refreshDetails();
+
+
+
+
+        }
+
+        public void refreshDetails()
+        {
+
             string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId DESC";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
 
-
             if (dtUserDistances.Rows.Count > 0)
             {
-                distanceView = dtUserDistances.Rows[0]["Distance"].ToString();
+                distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
                 userDistanceView.Text = distanceView;
-                typeOfSportView = dtUserDistances.Rows[0]["TypeOfSport"].ToString();
+                typeOfSportView = dtUserDistances.Rows[detailIndex]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;
-                dayTimeView = dtUserDistances.Rows[0]["DayTime"].ToString();
+                dayTimeView = dtUserDistances.Rows[detailIndex]["DayTime"].ToString();
                 userDayTime.Text = dayTimeView;
-                durationView = dtUserDistances.Rows[0]["Duration"].ToString();
+                durationView = dtUserDistances.Rows[detailIndex]["Duration"].ToString();
                 userDurationView.Text = durationView;
-                averageSpeedView = dtUserDistances.Rows[0]["AverageSpeed"].ToString();
+                averageSpeedView = dtUserDistances.Rows[detailIndex]["AverageSpeed"].ToString();
                 userAverageSpeedView.Text = averageSpeedView;
-                caloriesBurnedView = dtUserDistances.Rows[0]["CaloriesBurned"].ToString();
+                caloriesBurnedView = dtUserDistances.Rows[detailIndex]["CaloriesBurned"].ToString();
                 usercaloriesBurnedView.Text = caloriesBurnedView;
             }
             else
             {
                 DisplayAlert("Error", "Could not log in. Either the email or password are wrong or your account was deactivated", "OK");
             }
-
-
-
-
         }
     }
 }

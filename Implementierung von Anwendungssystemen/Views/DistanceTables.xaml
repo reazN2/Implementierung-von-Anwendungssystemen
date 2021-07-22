@@ -35,6 +35,10 @@
                 <Label Text="Calories Burned" FontSize="Medium"/>
                 <Label  FontSize="Medium" x:Name="usercaloriesBurnedView"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Button  Text="+"   FontSize="Medium" x:Name="PlusButton" Clicked="PlusButton_Clicked" />
+                <Button  Text="-"    FontSize="Medium" x:Name="MinusButton" Clicked="MinusButton_Clicked" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

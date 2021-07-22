@@ -21,7 +21,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private bool stop1;
         private bool dis1;
         double distance;
-        //string duration;
+        string duration1;
         double duration;
         double averageSpeed;
         double caloriesBurned;
@@ -83,22 +83,35 @@ namespace Implementierung_von_Anwendungssystemen.Views
             // btnStart.Text = "Start";
 
             //duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
-            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            var ts = stopwatch.Elapsed;
+            duration1 = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
+            duration = stopwatch.Elapsed.TotalSeconds;
             // averageSpeed = distance / duration * 1000;
             averageSpeed = distance * 3600 / duration;
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
-            caloriesBurned = 4.2 * duration / 60;
+            caloriesBurned = 10 * duration / 60;
             caloriesBurned1.Text = caloriesBurned.ToString("####" +"kcal");
-            
-            
-           
+
+
+            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration1,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
+
+            //This Part is to make the Data private//
+            insertCommand.Parameters.AddWithValue("@distance", distance);
+            insertCommand.Parameters.AddWithValue("@duration1", duration1);
+            insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
+            insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
+            insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
+            insertCommand.Parameters.AddWithValue("@typeOfSport", typeOfSport);
+            insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
+            int row = objDBAccess.ExecuteQuery(insertCommand);
+
             /*if (duration > stopwatch.Elapsed.Minutes
             {
                 caloriesBurned = 1 * 120;
                     }; */
 
-            
-          //  averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
+
+            //  averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             stopwatch.Reset();
             distance = 0;
             averageSpeed = 0;
@@ -107,23 +120,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stop1 = false;
             
 
-/*
             // transferiere die daten in die DB 
-            SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
-
-            //This Part is to make the Data private//
-            insertCommand.Parameters.AddWithValue("@distance", distance);
-            insertCommand.Parameters.AddWithValue("@duration", duration);
-            insertCommand.Parameters.AddWithValue("@averageSpeed", averageSpeed);
-            insertCommand.Parameters.AddWithValue("@dayTime", dayTime);
-            insertCommand.Parameters.AddWithValue("@caloriesBurned", caloriesBurned);
-            insertCommand.Parameters.AddWithValue("@typeOfSport", typeOfSport);
-            insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
-            int row = objDBAccess.ExecuteQuery(insertCommand);
-
-            */
-
-
 
 
 
@@ -141,8 +138,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stopwatch.Start();
             Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
             {
-                lblStopwatch.Text = stopwatch.Elapsed.ToString();
+                var ts = stopwatch.Elapsed;
+                lblStopwatch.Text = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
                 return true;
+
 
             });
             var StartLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
@@ -191,17 +190,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
             duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
             
-
-            /*  TimeSpan ts = stopwatch.Elapsed;
-              duration = string.Format("hh:mm:ss",
-                  ts.Hours, ts.Minutes, ts.Seconds,
-                  ts.Milliseconds /10); */
-           // averageSpeed = distance * 1000 / 60;
-
-          //  string elapsedTime = String.Format("{0:00}:{1:00}.{3:00}");
-         //    ts.Minutes, ts.Seconds, ts.
-
-        
 
 
 
