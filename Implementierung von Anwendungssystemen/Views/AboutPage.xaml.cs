@@ -143,74 +143,77 @@ namespace Implementierung_von_Anwendungssystemen.Views
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
-        { string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
-            if ("Running" == run)
-            { ImageRun.IsVisible = true;
-                ImageSwim.IsVisible = false;
-                ImageCycle.IsVisible = false;
-            }
-            else if ("Swimming" == run)
-                    {
-                ImageRun.IsVisible = false;
-                ImageSwim.IsVisible = true;
-                ImageCycle.IsVisible = false;
-            }
-            else if ("Cycling" == run)
-            {
-                ImageRun.IsVisible = false;
-                ImageSwim.IsVisible = false;
-                ImageCycle.IsVisible = true;
-            }
+        { if (typeOfSport == "")
+            { DisplayAlert("No Activity", "Please select an Activity", "OK");}
+            else { 
+                string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
+                if ("Running" == run)
+                { ImageRun.IsVisible = true;
+                    ImageSwim.IsVisible = false;
+                    ImageCycle.IsVisible = false;
+                }
+                else if ("Swimming" == run)
+                {
+                    ImageRun.IsVisible = false;
+                    ImageSwim.IsVisible = true;
+                    ImageCycle.IsVisible = false;
+                }
+                else if ("Cycling" == run)
+                {
+                    ImageRun.IsVisible = false;
+                    ImageSwim.IsVisible = false;
+                    ImageCycle.IsVisible = true;
+                }
 
 
-            stop1 = false;
-            dis1 = true;
-            stopwatch.Start();
-            Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
-            {
-                var ts = stopwatch.Elapsed;
-                lblStopwatch.Text = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                return true;
+                stop1 = false;
+                dis1 = true;
+                stopwatch.Start();
+                Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+                {
+                    var ts = stopwatch.Elapsed;
+                    lblStopwatch.Text = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                    return true;
 
 
-            });
-            var StartLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
+                });
+                var StartLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
 
-            var CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
+                var CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
 
-            while (dis1 == true)
-            {
-
-
-                var gerade = CurrentLocation;
-
-                CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
-                distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
-                stringDistance.Text = distance.ToString("0.00" + "km");
-
-
-
-                //Console.WriteLine(distance.ToString());
-
-
-
-
-                if (stop1 == true)
+                while (dis1 == true)
                 {
 
-                    btnCalculate.Text = "Resume";
-                    stopwatch.Stop();
-                    dis1 = false;
+
+                    var gerade = CurrentLocation;
+
+                    CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
+                    distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
+                    stringDistance.Text = distance.ToString("0.00" + "km");
+
+
+
+                    //Console.WriteLine(distance.ToString());
+
+
+
+
+                    if (stop1 == true)
+                    {
+
+                        btnCalculate.Text = "Resume";
+                        stopwatch.Stop();
+                        dis1 = false;
+
+
+
+                    }
+
 
 
 
                 }
-
-
-
-
             }
-
 
         }
 
