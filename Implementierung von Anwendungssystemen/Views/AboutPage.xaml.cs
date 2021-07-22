@@ -79,6 +79,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         private void btnReset_Clicked(object sender, EventArgs e)
         {
             lblStopwatch.Text = "00:00";
+            btnCalculate.Text = "Start Activity";
             // btnStart.Text = "Start";
 
             //duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
@@ -88,7 +89,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             caloriesBurned = 4.2 * duration / 60;
             caloriesBurned1.Text = caloriesBurned.ToString("####" +"kcal");
-
+            
+            
            
             /*if (duration > stopwatch.Elapsed.Minutes
             {
@@ -101,6 +103,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             distance = 0;
             averageSpeed = 0;
             caloriesBurned = 0;
+
             stop1 = false;
             
 

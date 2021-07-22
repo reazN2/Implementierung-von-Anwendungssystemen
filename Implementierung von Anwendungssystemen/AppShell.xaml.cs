@@ -14,6 +14,8 @@ namespace Implementierung_von_Anwendungssystemen
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(route:"Registration", typeof(Registration));
+            Routing.RegisterRoute(nameof(DistanceTables), typeof(DistanceTables));
+            Routing.RegisterRoute(nameof(ManualDistance), typeof(ManualDistance));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
