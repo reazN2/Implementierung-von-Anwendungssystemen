@@ -45,24 +45,27 @@
                 <Frame>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Start" x:Name="stringDistance" 
                        
-                       FontSize="Large" TextColor="DarkOrange" HorizontalOptions="Center" VerticalOptions="Start"  FontAttributes="Italic"></Label>
+                       FontSize="Large" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Start"  FontAttributes="Italic"></Label>
                 </Frame>
-
-                <Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Frame WidthRequest="200">
                     <Label x:Name="averageSpeed1" HorizontalOptions="Center" FontSize="Large"></Label>
                 </Frame>
 
-                <Frame>
+                <Frame WidthRequest="200">
                     <Label x:Name="caloriesBurned1" HorizontalOptions="Center" FontSize="Large"></Label>
                 </Frame>
-                
+                </StackLayout>
+
                 <Label x:Name="lblStopwatch" FontSize="45" TextColor= "Black" 
                HorizontalOptions="Center"
                VerticalOptions="Center">
                 </Label>
-                <Label Text="Type of Sport" FontSize="Large"/>
-                <Picker x:Name="ActivityPicker" SelectedIndexChanged="ActivityPicker_SelectedIndexChanged"   Title="Select your Activity"  FontSize="16" TextColor="Gray"></Picker>
 
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center" >
+                    <Label Text="Type of Sport" FontSize="Large" WidthRequest="140"/>
+                </StackLayout>
+                <Picker x:Name="ActivityPicker" SelectedIndexChanged="ActivityPicker_SelectedIndexChanged"   Title="Select your Activity"  FontSize="16" TextColor="Gray"></Picker>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
                     <Button x:Name="btnCalculate" Text="Start activity" HorizontalOptions="FillAndExpand" Clicked="BtnCalc_Clicked" BackgroundColor="DarkGreen" WidthRequest="182"></Button>
                     <Button x:Name="BtnStop" Text="Stop" HorizontalOptions="FillAndExpand" Clicked="BtnStop_Clicked" BackgroundColor="DarkRed" WidthRequest="182"></Button>
