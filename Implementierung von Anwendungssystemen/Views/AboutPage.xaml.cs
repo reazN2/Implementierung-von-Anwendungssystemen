@@ -26,7 +26,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double averageSpeed;
         double caloriesBurned;
         string dayTime = "14:56";
-        string typeOfSport = "Running";
+        string typeOfSport;
        
 
 
@@ -54,33 +54,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
-        /*private void btnStart_Clicked(object sender, EventArgs e)
-        {
-            if (!stopwatch.IsRunning)
-            {
-                stopwatch.Start();
-
-                Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
-                {
-                    lblStopwatch.Text = stopwatch.Elapsed.ToString();
-
-                    if (!stopwatch.IsRunning)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-
-                }
-
-                );
-            }
 
 
 
-        } */
+        
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
@@ -143,7 +120,18 @@ namespace Implementierung_von_Anwendungssystemen.Views
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
-        { if (typeOfSport == "")
+        {
+            if (ActivityPicker.SelectedIndex < 0)
+            {
+                typeOfSport = "";
+
+            }
+            else
+            {
+                typeOfSport = ActivityPicker.Items[ActivityPicker.SelectedIndex];
+            }
+            if (typeOfSport == "")
+
             { DisplayAlert("No Activity", "Please select an Activity", "OK");}
             else { 
                 string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
