@@ -78,11 +78,16 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             lblStopwatch.Text = "00:00";
             // btnStart.Text = "Start";
+            
+            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            averageSpeed = distance / duration * 60;
+            averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             stopwatch.Reset();
             distance = 0;
             stop1 = false;
+            
 
-
+/*
             // transferiere die daten in die DB 
             SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
 
@@ -96,12 +101,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
             int row = objDBAccess.ExecuteQuery(insertCommand);
 
+            */
 
 
 
-
-            averageSpeed = distance / 60;
-                averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
 
 
         }

@@ -32,6 +32,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             double manualDuration;
             float manualAverageSpeed;
             int manualCaloriesBurned;
+            
 
             float value0;
             string stringManualDistance = EntryManualDistance.Text;
