@@ -28,6 +28,12 @@
                 <ContentView Padding="0,-15,0,20" VerticalOptions="FillAndExpand">
                     <Image Source="userimage.png" VerticalOptions="Start" HeightRequest="100" />
                 </ContentView>
+                <ContentView Padding="0,-15,0,20" VerticalOptions="FillAndExpand">
+                    <Image Source="schwimmen.png" VerticalOptions="Start" HeightRequest="100" />
+                </ContentView>
+                <ContentView Padding="0,-15,0,20" VerticalOptions="FillAndExpand">
+                    <Image Source="cycle.png" VerticalOptions="Start" HeightRequest="100" />
+                </ContentView>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
