@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Implementierung_von_Anwendungssystemen.Views.AboutPage"
              xmlns:vm="clr-namespace:Implementierung_von_Anwendungssystemen.ViewModels"
-             Title="{Binding Title}">
+             Title="Start Page">
 
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
@@ -45,6 +45,7 @@
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Start" x:Name="stringDistance"
                        FontSize="Large" TextColor="DarkOrange" FontAttributes="Italic"></Label>
                 <Label x:Name="averageSpeed1" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large"></Label>
+                <Label x:Name="caloriesBurned1" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large"></Label>
                        
 
                <!-- </Label>

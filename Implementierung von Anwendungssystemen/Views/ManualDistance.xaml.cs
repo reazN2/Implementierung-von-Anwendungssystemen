@@ -29,6 +29,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             MainPicker.Items.Add("Running");
             MainPicker.Items.Add("Swimming");
             MainPicker.Items.Add("Cycling");
+            timePicker.Time = DateTime.Now.TimeOfDay;
         }
 
         private void AddDistance_Clicked(object sender, EventArgs e)

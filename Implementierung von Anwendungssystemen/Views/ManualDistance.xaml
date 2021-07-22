@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=System.Runtime"
              x:Class="Implementierung_von_Anwendungssystemen.Views.ManualDistance">
     <ContentPage.Content>
         <StackLayout>
@@ -17,11 +17,36 @@
                 <StackLayout Grid.Row="1">
                     <Label Text="Type of Sport" FontSize="Small"/>
                     <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity"></Picker>
-                </StackLayout>
+                    <StackLayout>
+                        <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
+                            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                            <DatePicker.MinimumDate>
+                                <sys:DateTime x:FactoryMethod="Parse">
+                                    <x:Arguments>
+                                        <x:String>Jan 1 2000</x:String>
+                                    </x:Arguments>
+                                </sys:DateTime>
+                            </DatePicker.MinimumDate>
+                            <DatePicker.MaximumDate>
+                                <sys:DateTime x:FactoryMethod="Parse">
+                                    <x:Arguments>
+                                        <x:String>Dec 31 2050</x:String>
+                                    </x:Arguments>
+                                </sys:DateTime>
+                            </DatePicker.MaximumDate>
+                        </DatePicker>
+                    </StackLayout>
+                    <TimePicker x:Name="timePicker"></TimePicker>
+                    
+                            
+
+
+            </StackLayout>
+                
                 <StackLayout Grid.Row="2">
                     <Label Text="Time of Day" FontSize="Small"/>
                     <Entry Placeholder="Time of Day" FontSize="16" x:Name="EntryManualTimeOfTheDay" ClearButtonVisibility="WhileEditing"/>
-                </StackLayout>
+                </StackLayout> 
                 <StackLayout Grid.Row="3">
                     <Label Text="Average Speed" FontSize="Small"/>
                     <Entry Placeholder="Average Speed " FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
