@@ -9,7 +9,6 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Margin="10, 20, 10, 40">
-            <Label Text="Activity Number:" FontSize="Medium" x:Name="ActivityNumber"/>
             <StackLayout>
             <Label Text="Distance:" FontSize="Medium"/>
                 <Frame Background="GhostWhite" HeightRequest="23">

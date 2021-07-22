@@ -29,7 +29,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             else
                 detailIndex = 0;
             refreshDetails();
-            neueVariable = dtUserDistances.Rows.Count - detailIndex ;
         } 
 
         private void MinusButton_Clicked(object sender, EventArgs e)
@@ -37,7 +36,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (detailIndex > 0)
                 detailIndex--;
             else
-                neueVariable = dtUserDistances.Rows.Count - detailIndex;
+                detailIndex = dtUserDistances.Rows.Count -1;
+                refreshDetails();
+
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
