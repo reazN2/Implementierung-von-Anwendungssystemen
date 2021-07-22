@@ -41,6 +41,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stringDistance.Text = "0";
             averageSpeed1.Text = "0";
             caloriesBurned1.Text = "0";
+            ImageRun.IsVisible = false;
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)

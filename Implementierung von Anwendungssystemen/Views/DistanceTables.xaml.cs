@@ -80,7 +80,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
             else
             {
-                DisplayAlert("Error", "Could not log in. Either the email or password are wrong or your account was deactivated", "OK");
+                DisplayAlert("Error", "You are not logged in", "OK");
             }
         }
     }
