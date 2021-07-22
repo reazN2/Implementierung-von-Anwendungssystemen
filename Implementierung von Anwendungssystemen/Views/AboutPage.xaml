@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                <ContentView Padding="0,-15,0,20" VerticalOptions="FillAndExpand">
                     <Image Source="userimage.png" VerticalOptions="Start" HeightRequest="100" />
                 </ContentView>
             </StackLayout>
@@ -39,9 +39,9 @@
                 </Label>
 
                 <!-- <Button x:Name="btnStart" Text="Start" Clicked="btnStart_Clicked" ></Button>-->
+                <Button x:Name="btnCalculate" Text="Start Tracking"  Clicked="BtnCalc_Clicked" BackgroundColor="Green"></Button>
                 <Button x:Name="BtnStop" Text="Stop" Clicked="BtnStop_Clicked" BackgroundColor="Red"></Button> 
-                <Button x:Name="btnCalculate" Text="Start Tracking" HorizontalOptions="Center" VerticalOptions="Center"  Clicked="BtnCalc_Clicked" BackgroundColor="Green"></Button>
-                <Button x:Name="btnReset" Text="Finish Activity" Clicked="btnReset_Clicked"></Button>
+                                <Button x:Name="btnReset" Text="Finish Activity" Clicked="btnReset_Clicked"></Button>
                 <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Start" x:Name="stringDistance"
                        FontSize="Large" TextColor="DarkOrange" FontAttributes="Italic"></Label>
                 <Label x:Name="averageSpeed1" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large"></Label>
