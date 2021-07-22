@@ -4,11 +4,9 @@
              x:Class="Implementierung_von_Anwendungssystemen.Views.Einstellungen"
              Title="Your account">
     
-    
     <ContentPage.Content>
         <StackLayout Padding="0,30,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" WidthRequest="370">
             <StackLayout HorizontalOptions="Start">
-                <Label Text="Settings" FontSize="Title" WidthRequest="350" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             <StackLayout Grid.Row="1">
                 <Label Text="Name:" FontSize="Medium"/>

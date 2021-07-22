@@ -10,7 +10,7 @@
                 <StackLayout Grid.Row="0" >
                     <Label Text="Distance:" FontSize="Large"/>
                     <Entry Placeholder="In kilometers" FontSize="16" x:Name="EntryManualDistance" ClearButtonVisibility="WhileEditing"
-                           TextColor="Gray" />
+                           TextColor="Gray"  />
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Label Text="Duration:" FontSize="Large"/>
@@ -19,7 +19,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="1">
                     <Label Text="Type of Sport" FontSize="Large"/>
-                    <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity" FontSize="16"></Picker>
+                    <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity" FontSize="16" TextColor="Gray"></Picker>
                     <StackLayout>
                       <!--  <DatePicker x:Name="DatePicker1" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
                             <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>

@@ -27,9 +27,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double caloriesBurned;
         string dayTime = "14:56";
         string typeOfSport = "Running";
-      
+       
 
-        
+
+
 
 
         public AboutPage()
@@ -38,10 +39,19 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stopwatch = new Stopwatch();
 
             lblStopwatch.Text = "00:00";
-            stringDistance.Text = "0";
+            stringDistance.Text = "0km";
             averageSpeed1.Text = "0";
             caloriesBurned1.Text = "0";
-            ImageRun.IsVisible = false;
+            
+            ActivityPicker.Items.Add("Running");
+            ActivityPicker.Items.Add("Swimming");
+            ActivityPicker.Items.Add("Cycling");
+        }
+        private void ActivityPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var name = ActivityPicker.Items[ActivityPicker.SelectedIndex];
+
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -91,7 +101,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             averageSpeed = distance * 3600 / duration;
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             caloriesBurned = 10 * duration / 60;
-            caloriesBurned1.Text = caloriesBurned.ToString("####" +"kcal");
+            caloriesBurned1.Text = caloriesBurned.ToString("####" + "kcal");
 
 
             SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration1,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
@@ -119,21 +129,40 @@ namespace Implementierung_von_Anwendungssystemen.Views
             caloriesBurned = 0;
 
             stop1 = false;
-            
+
 
             // transferiere die daten in die DB 
 
 
 
-           // averageSpeed = distance / 60;
-                //averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
+            // averageSpeed = distance / 60;
+            //averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
 
 
 
         }
 
         private async void BtnCalc_Clicked(object sender, EventArgs e)
-        {
+        { string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
+            if ("Running" == run)
+            { ImageRun.IsVisible = true;
+                ImageSwim.IsVisible = false;
+                ImageCycle.IsVisible = false;
+            }
+            else if ("Swimming" == run)
+                    {
+                ImageRun.IsVisible = false;
+                ImageSwim.IsVisible = true;
+                ImageCycle.IsVisible = false;
+            }
+            else if ("Cycling" == run)
+            {
+                ImageRun.IsVisible = false;
+                ImageSwim.IsVisible = false;
+                ImageCycle.IsVisible = true;
+            }
+
+
             stop1 = false;
             dis1 = true;
             stopwatch.Start();
@@ -149,16 +178,17 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             var CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
 
-            while  (dis1 == true) {
+            while (dis1 == true)
+            {
 
 
                 var gerade = CurrentLocation;
 
                 CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
                 distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
-                stringDistance.Text = distance.ToString("0.00"+"km") ;
+                stringDistance.Text = distance.ToString("0.00" + "km");
 
-                
+
 
                 //Console.WriteLine(distance.ToString());
 
@@ -171,13 +201,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     btnCalculate.Text = "Resume";
                     stopwatch.Stop();
                     dis1 = false;
-                   
-                    
+
+
 
                 }
 
-                
-               
+
+
 
             }
 
@@ -190,12 +220,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stopwatch.Stop();
             // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
             duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
-            
+
 
 
 
         }
-        }
+
+    }
 
     }
            
