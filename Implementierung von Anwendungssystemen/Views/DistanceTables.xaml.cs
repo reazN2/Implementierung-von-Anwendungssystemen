@@ -66,7 +66,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (dtUserDistances.Rows.Count > 0)
             {
                 distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
-                userDistanceView.Text = distanceView;
+                userDistanceView.Text = Math.Round(float.Parse(distanceView),2).ToString();
                 typeOfSportView = dtUserDistances.Rows[detailIndex]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;
                 dayTimeView = dtUserDistances.Rows[detailIndex]["DayTime"].ToString();
@@ -74,7 +74,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 durationView = dtUserDistances.Rows[detailIndex]["Duration"].ToString();
                 userDurationView.Text = durationView;
                 averageSpeedView = dtUserDistances.Rows[detailIndex]["AverageSpeed"].ToString();
-                userAverageSpeedView.Text = averageSpeedView;
+                userAverageSpeedView.Text = Math.Round(float.Parse(averageSpeedView), 2).ToString(); ;
                 caloriesBurnedView = dtUserDistances.Rows[detailIndex]["CaloriesBurned"].ToString();
                 usercaloriesBurnedView.Text = caloriesBurnedView;
             }
