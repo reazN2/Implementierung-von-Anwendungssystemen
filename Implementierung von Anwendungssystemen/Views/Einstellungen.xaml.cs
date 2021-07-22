@@ -47,9 +47,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string newUserName = EntryUserName.Text;
             string newUserEmail; 
             string newUserPassword = EntryUserPassword.Text;
-            string newUserUniversity = "not selected";
-            newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
-
+            string newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
