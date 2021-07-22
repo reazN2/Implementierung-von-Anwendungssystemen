@@ -7,7 +7,7 @@
         <ToolbarItem Text="Add new activity" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="10 10 10 20">
         <StackLayout>
             <Label Text="Distance:" FontSize="Small"/>
                 <Frame Background="GhostWhite" HeightRequest="23">
@@ -47,10 +47,11 @@
             <StackLayout>
 
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Button  Text="+"   FontSize="Medium" x:Name="PlusButton" Clicked="PlusButton_Clicked" />
-                <Button  Text="-"    FontSize="Medium" x:Name="MinusButton" Clicked="MinusButton_Clicked" />
-            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                <Button x:Name="PlusButton" Text="+" HorizontalOptions="FillAndExpand" Clicked="PlusButton_Clicked"  WidthRequest="182"></Button>
+                <Button x:Name="MinusButton" Text="-" HorizontalOptions="FillAndExpand" Clicked="MinusButton_Clicked"  WidthRequest="182"></Button>
+                </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
