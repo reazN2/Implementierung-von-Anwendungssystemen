@@ -21,6 +21,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
 
         int detailIndex = 0;
+        int neueVariable;
         private void PlusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex < dtUserDistances.Rows.Count - 1)
@@ -28,6 +29,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             else
                 detailIndex = 0;
             refreshDetails();
+            neueVariable = dtUserDistances.Rows.Count - detailIndex -1 ;
         } 
 
         private void MinusButton_Clicked(object sender, EventArgs e)
@@ -35,8 +37,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (detailIndex > 0)
                 detailIndex--;
             else
-                detailIndex = dtUserDistances.Rows.Count - 1;
-            refreshDetails();
+                neueVariable = dtUserDistances.Rows.Count - detailIndex -1;
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)

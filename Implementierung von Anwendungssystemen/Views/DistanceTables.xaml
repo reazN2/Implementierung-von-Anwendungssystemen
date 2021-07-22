@@ -8,45 +8,45 @@
         <ToolbarItem Text="Add new activity" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Margin="10 10 10 20">
+        <StackLayout Margin="10, 20, 10, 40">
         <StackLayout>
-            <Label Text="Distance:" FontSize="Small"/>
+            <Label Text="Distance:" FontSize="Medium"/>
                 <Frame Background="GhostWhite" HeightRequest="23">
-                    <Label  FontSize="Small" x:Name="userDistanceView"/>
+                    <Label  FontSize="Medium" x:Name="userDistanceView"/>
                 </Frame>
             </StackLayout>
         <StackLayout>
-                <Label Text="Type of Sport:" FontSize="Small"/>
+                <Label Text="Type of Sport:" FontSize="Medium"/>
                 <Frame Background="GhostWhite" HeightRequest="23">
-                    <Label  FontSize="Small" x:Name="userTypeOfSportView"/>
+                    <Label  FontSize="Medium" x:Name="userTypeOfSportView"/>
                 </Frame>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Time of Day:" FontSize="Small" WidthRequest="200"/>
-                <Label Text="Duration" FontSize="Small" WidthRequest="200"/>
+                <Label Text="Time of Day:" FontSize="Medium" WidthRequest="200"/>
+                <Label Text="Duration" FontSize="Medium" WidthRequest="200"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Frame Background="GhostWhite" WidthRequest="200">
-                    <Label  FontSize="Small" x:Name="userDayTime"/>
+                    <Label  FontSize="Medium" x:Name="userDayTime" HorizontalOptions="Center"/>
                 </Frame>
                 <Frame Background="GhostWhite" WidthRequest="200">
-                    <Label  FontSize="Small" x:Name="userDurationView"/>
+                    <Label  FontSize="Medium" x:Name="userDurationView" HorizontalOptions="Center"/>
                 </Frame>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="AverageSpeed" FontSize="Small" WidthRequest="200"/>
-                <Label Text="Calories Burned" FontSize="Small" WidthRequest="200"/>
+                <Label Text="Average Speed" FontSize="Medium" WidthRequest="200"/>
+                <Label Text="Calories Burned" FontSize="Medium" WidthRequest="200" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Frame Background="GhostWhite" WidthRequest="200">
-                    <Label  FontSize="Small" x:Name="userAverageSpeedView" />
+                <Frame Background="GhostWhite" WidthRequest="200" >
+                    <Label  FontSize="Medium" x:Name="userAverageSpeedView" HorizontalOptions="Center"/>
                 </Frame>
-                <Frame Background="GhostWhite" WidthRequest="200">
-                    <Label  FontSize="Small" x:Name="usercaloriesBurnedView"/>
+                <Frame Background="GhostWhite" WidthRequest="200" >
+                    <Label  FontSize="Medium" x:Name="usercaloriesBurnedView" HorizontalOptions="Center"/>
                 </Frame>
             </StackLayout>
-            <StackLayout>
-
+            <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center" >
+                <Label Text="Switch between latest activities" FontSize="Medium" VerticalTextAlignment="End"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
                 <Button x:Name="PlusButton" Text="+" HorizontalOptions="FillAndExpand" Clicked="PlusButton_Clicked"  WidthRequest="182"></Button>

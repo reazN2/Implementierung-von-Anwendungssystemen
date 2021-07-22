@@ -85,14 +85,14 @@
     <FlyoutItem Title="Start Page" Icon="Running.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Settings" Icon="Einstellungen.png">
-        <ShellContent Route="Settings" ContentTemplate="{DataTemplate local:Einstellungen}" />
-    </FlyoutItem>
     <FlyoutItem Title="Add an Activity" Icon="Addrun.png">
         <ShellContent Route="ManualDistance" ContentTemplate="{DataTemplate local:ManualDistance}" />
     </FlyoutItem>
     <FlyoutItem Title="Recent activities" Icon="activity.png">
         <ShellContent Route="DistanceTables" ContentTemplate="{DataTemplate local:DistanceTables}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Account" Icon="Einstellungen.png">
+        <ShellContent Route="Settings" ContentTemplate="{DataTemplate local:Einstellungen}" />
     </FlyoutItem>
 
 
