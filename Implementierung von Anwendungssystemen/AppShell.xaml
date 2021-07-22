@@ -94,7 +94,7 @@
     <FlyoutItem Title="Add Distance manually" Icon="Addrun.png">
         <ShellContent Route="ManualDistance" ContentTemplate="{DataTemplate local:ManualDistance}" />
     </FlyoutItem>
-    <FlyoutItem Title="View your recent activity" Icon="activity.png">
+    <FlyoutItem Title="View your recent activity" Icon="activity.pngg">
         <ShellContent Route="DistanceTables" ContentTemplate="{DataTemplate local:DistanceTables}" />
     </FlyoutItem>
 
