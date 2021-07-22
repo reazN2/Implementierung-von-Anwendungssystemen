@@ -88,13 +88,13 @@
     <FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Settings" Icon="Einstellungen.png">
+    <FlyoutItem Title="Account" Icon="Einstellungen.png">
         <ShellContent Route="Settings" ContentTemplate="{DataTemplate local:Einstellungen}" />
     </FlyoutItem>
-    <FlyoutItem Title="Add Distance manually" Icon="Addrun.png">
+    <FlyoutItem Title="Add an Activity" Icon="Addrun.png">
         <ShellContent Route="ManualDistance" ContentTemplate="{DataTemplate local:ManualDistance}" />
     </FlyoutItem>
-    <FlyoutItem Title="View your recent activity" Icon="activity.png">
+    <FlyoutItem Title="Recent activities" Icon="activity.png">
         <ShellContent Route="DistanceTables" ContentTemplate="{DataTemplate local:DistanceTables}" />
     </FlyoutItem>
 

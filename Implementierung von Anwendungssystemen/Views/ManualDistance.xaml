@@ -1,24 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=System.Runtime"
-             x:Class="Implementierung_von_Anwendungssystemen.Views.ManualDistance">
+             x:Class="Implementierung_von_Anwendungssystemen.Views.ManualDistance"
+             Title="Add a new Activity">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Padding="10,10,10,0" VerticalOptions="CenterAndExpand">
+            <StackLayout Padding="10,10,10,0" >
 
-                <StackLayout Grid.Row="0">
-                    <Label Text="Distance:" FontSize="Small"/>
-                    <Entry Placeholder="Distance in kilometers" FontSize="16" x:Name="EntryManualDistance" ClearButtonVisibility="WhileEditing"/>
+                <StackLayout Grid.Row="0" >
+                    <Label Text="Distance:" FontSize="Large"/>
+                    <Entry Placeholder="In kilometers" FontSize="16" x:Name="EntryManualDistance" ClearButtonVisibility="WhileEditing"
+                           TextColor="Gray" />
                 </StackLayout>
                 <StackLayout Grid.Row="3">
-                    <Label Text="Duration:" FontSize="Small"/>
-                    <Entry Placeholder="Duration in full minutes" FontSize="16" x:Name="EntryManualDuration" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Duration:" FontSize="Large"/>
+                    <Entry TextColor="Gray"
+                        Placeholder="In [hh:mm:ss]" FontSize="16" x:Name="EntryManualDuration" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Type of Sport" FontSize="Small"/>
-                    <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity"></Picker>
+                    <Label Text="Type of Sport" FontSize="Large"/>
+                    <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity" FontSize="16"></Picker>
                     <StackLayout>
-                        <DatePicker x:Name="DatePicker1" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
+                      <!--  <DatePicker x:Name="DatePicker1" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
                             <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                             <DatePicker.MinimumDate>
                                 <sys:DateTime x:FactoryMethod="Parse">
@@ -34,23 +37,23 @@
                                     </x:Arguments>
                                 </sys:DateTime>
                             </DatePicker.MaximumDate>
-                        </DatePicker>
-                    </StackLayout>
-                    <TimePicker x:Name="timePicker"></TimePicker>
+                        </DatePicker> -->
+                    </StackLayout >
                     
-                            
-
+                        <Label Text="Time of day" FontSize="Large"></Label>
+                        <TimePicker x:Name="timePicker" TextColor="Gray"></TimePicker>
 
             </StackLayout>
-                
-               
+            
                 <StackLayout Grid.Row="3">
-                    <Label Text="Average Speed" FontSize="Small"/>
-                    <Entry Placeholder="Average Speed " FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
+                    <Label Text="Average Speed" FontSize="Large"/>
+                    <Entry Placeholder="In km/h" FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"
+                           TextColor="Gray"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3">
-                    <Label Text="Calories Burned" FontSize="Small"/>
-                    <Entry Placeholder="Calories Burned" FontSize="16" x:Name="EntryManualCaloriesBurned" ClearButtonVisibility="WhileEditing" />
+                    <Label Text="Calories Burned" FontSize="Large"/>
+                    <Entry Placeholder="Calories Burned" FontSize="16" x:Name="EntryManualCaloriesBurned" ClearButtonVisibility="WhileEditing" 
+                           TextColor="Gray"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="4">
