@@ -23,6 +23,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             var name = MainPicker.Items[MainPicker.SelectedIndex];
 
         }
+
         public ManualDistance()
         {
             InitializeComponent();

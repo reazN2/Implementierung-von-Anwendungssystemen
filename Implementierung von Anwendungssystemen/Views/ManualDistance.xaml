@@ -18,7 +18,7 @@
                     <Label Text="Type of Sport" FontSize="Small"/>
                     <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity"></Picker>
                     <StackLayout>
-                        <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
+                        <DatePicker x:Name="DatePicker1" VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}">
                             <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                             <DatePicker.MinimumDate>
                                 <sys:DateTime x:FactoryMethod="Parse">

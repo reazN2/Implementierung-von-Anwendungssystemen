@@ -27,7 +27,7 @@
             </StackLayout>
             <StackLayout>
                 <Label Text="AverageSpeed" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userAverageSpeedView"/>
+                <Label  FontSize="Medium" x:Name="userAverageSpeedView" />
 
             </StackLayout>
             <StackLayout>
