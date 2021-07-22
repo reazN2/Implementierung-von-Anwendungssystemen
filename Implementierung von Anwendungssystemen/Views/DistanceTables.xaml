@@ -9,31 +9,43 @@
     <ContentPage.Content>
         <StackLayout>
         <StackLayout>
-            <Label Text="Distance:" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userDistanceView"/>
-               
+            <Label Text="Distance:" FontSize="Small"/>
+                <Frame Background="GhostWhite" HeightRequest="23">
+                    <Label  FontSize="Small" x:Name="userDistanceView"/>
+                </Frame>
             </StackLayout>
         <StackLayout>
-            <Label Text="Type of Sport:" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userTypeOfSportView"/>
+                <Label Text="Type of Sport:" FontSize="Small"/>
+                <Frame Background="GhostWhite" HeightRequest="23">
+                    <Label  FontSize="Small" x:Name="userTypeOfSportView"/>
+                </Frame>
             </StackLayout>
-        <StackLayout>
-            <Label Text="Time of Day:" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userDayTime"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Time of Day:" FontSize="Small" WidthRequest="200"/>
+                <Label Text="Duration" FontSize="Small" WidthRequest="200"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame Background="GhostWhite" WidthRequest="200">
+                    <Label  FontSize="Small" x:Name="userDayTime"/>
+                </Frame>
+                <Frame Background="GhostWhite" WidthRequest="200">
+                    <Label  FontSize="Small" x:Name="userDurationView"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="AverageSpeed" FontSize="Small" WidthRequest="200"/>
+                <Label Text="Calories Burned" FontSize="Small" WidthRequest="200"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame Background="GhostWhite" WidthRequest="200">
+                    <Label  FontSize="Small" x:Name="userAverageSpeedView" />
+                </Frame>
+                <Frame Background="GhostWhite" WidthRequest="200">
+                    <Label  FontSize="Small" x:Name="usercaloriesBurnedView"/>
+                </Frame>
             </StackLayout>
             <StackLayout>
-                <Label Text="Duration:" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userDurationView"/>
 
-            </StackLayout>
-            <StackLayout>
-                <Label Text="AverageSpeed" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="userAverageSpeedView" />
-
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Calories Burned" FontSize="Medium"/>
-                <Label  FontSize="Medium" x:Name="usercaloriesBurnedView"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button  Text="+"   FontSize="Medium" x:Name="PlusButton" Clicked="PlusButton_Clicked" />
