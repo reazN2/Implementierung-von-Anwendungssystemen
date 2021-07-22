@@ -146,4 +146,13 @@
       <Name>Implementierung von Anwendungssystemen</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Addrun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Running.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Einstellungen.gif" />
+  </ItemGroup>
 </Project>

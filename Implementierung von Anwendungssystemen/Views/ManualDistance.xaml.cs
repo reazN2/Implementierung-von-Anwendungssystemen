@@ -29,6 +29,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             MainPicker.Items.Add("Running");
             MainPicker.Items.Add("Swimming");
             MainPicker.Items.Add("Cycling");
+            timePicker.Time = DateTime.Now.TimeOfDay;
         }
 
         private void AddDistance_Clicked(object sender, EventArgs e)
@@ -39,6 +40,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             double manualDuration;
             float manualAverageSpeed;
             int manualCaloriesBurned;
+            
 
             float value0;
             string stringManualDistance = EntryManualDistance.Text;

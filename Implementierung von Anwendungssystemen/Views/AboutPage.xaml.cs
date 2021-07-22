@@ -24,9 +24,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
         //string duration;
         double duration;
         double averageSpeed;
-        int caloriesBurned = 700;
+        double caloriesBurned;
         string dayTime = "14:56";
         string typeOfSport = "Running";
+      
 
         
 
@@ -38,7 +39,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
-            //averageSpeed1.Text = "0";
+            averageSpeed1.Text = "0";
+            caloriesBurned1.Text = "0";
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)
@@ -78,11 +80,31 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             lblStopwatch.Text = "00:00";
             // btnStart.Text = "Start";
+
+            //duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+            // averageSpeed = distance / duration * 1000;
+            averageSpeed = distance * 3600 / duration;
+            averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
+            caloriesBurned = 4.2 * duration / 60;
+            caloriesBurned1.Text = caloriesBurned.ToString("####" +"kcal");
+
+           
+            /*if (duration > stopwatch.Elapsed.Minutes
+            {
+                caloriesBurned = 1 * 120;
+                    }; */
+
+            
+          //  averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             stopwatch.Reset();
             distance = 0;
+            averageSpeed = 0;
+            caloriesBurned = 0;
             stop1 = false;
+            
 
-
+/*
             // transferiere die daten in die DB 
             SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
 
@@ -96,12 +118,15 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
             int row = objDBAccess.ExecuteQuery(insertCommand);
 
+            */
 
 
 
 
-            averageSpeed = distance / 60;
+
+           // averageSpeed = distance / 60;
                 //averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
+
 
 
         }
@@ -128,8 +153,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                 CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
                 distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
-                stringDistance.Text = distance.ToString("0.####"+"km") ;
-                
+                stringDistance.Text = distance.ToString("0.00"+"km") ;
 
                 
 
