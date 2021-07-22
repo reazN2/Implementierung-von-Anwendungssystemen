@@ -43,10 +43,7 @@
 
             </StackLayout>
                 
-                <StackLayout Grid.Row="2">
-                    <Label Text="Time of Day" FontSize="Small"/>
-                    <Entry Placeholder="Time of Day" FontSize="16" x:Name="EntryManualTimeOfTheDay" ClearButtonVisibility="WhileEditing"/>
-                </StackLayout> 
+               
                 <StackLayout Grid.Row="3">
                     <Label Text="Average Speed" FontSize="Small"/>
                     <Entry Placeholder="Average Speed " FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>

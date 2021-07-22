@@ -10,7 +10,8 @@
         <StackLayout>
         <StackLayout>
             <Label Text="Distance:" FontSize="Medium"/>
-            <Label  FontSize="Medium" x:Name="userDistanceView"/>
+                <Label  FontSize="Medium" x:Name="userDistanceView"/>
+               
             </StackLayout>
         <StackLayout>
             <Label Text="Type of Sport:" FontSize="Medium"/>

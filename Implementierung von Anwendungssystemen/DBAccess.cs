@@ -13,7 +13,7 @@ namespace Implementierung_von_Anwendungssystemen
         private static SqlDataAdapter adapter = new SqlDataAdapter();
         public SqlTransaction DbTran;
 
-        private static string strConnString = "Data Source=ubi19.informatik.uni-siegen.de;Initial Catalog=Testdatenbank3;Persist Security Info=True;User ID=gruppe05-1;Password=Ningen19!";
+        private static string strConnString = "Data Source=ubi19.informatik.uni-siegen.de;Initial Catalog=Testdatenbank3;Persist Security Info=True;User ID=gruppe05-1;Password=Ningen18!";
 
 
 
