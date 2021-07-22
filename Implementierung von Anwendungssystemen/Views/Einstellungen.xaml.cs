@@ -47,11 +47,20 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string newUserName = EntryUserName.Text;
             string newUserEmail; 
             string newUserPassword = EntryUserPassword.Text;
-            string newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
+            string newUserUniversity;
+
+            if (PickerUniversitySettings.SelectedIndex < 0)
+            {
+                newUserUniversity = "";
+            }
+            else
+            {
+                newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
+            }
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
-            if (!Regex.IsMatch(email, emailPattern))
+            if (Regex.IsMatch(email, emailPattern))
             {
                 newUserEmail = EntryUserEmail.Text;
             }

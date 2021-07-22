@@ -23,15 +23,19 @@ namespace Implementierung_von_Anwendungssystemen.Views
         int detailIndex = 0;
         private void PlusButton_Clicked(object sender, EventArgs e)
         {
-            if(detailIndex < dtUserDistances.Rows.Count -1)
+            if (detailIndex < dtUserDistances.Rows.Count - 1)
                 detailIndex++;
+            else
+                detailIndex = 0;
             refreshDetails();
-        }
+        } 
 
         private void MinusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex > 0)
                 detailIndex--;
+            else
+                detailIndex = dtUserDistances.Rows.Count - 1;
             refreshDetails();
         }
 
@@ -56,7 +60,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
 
             string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId DESC";
-
+            dtUserDistances = new DataTable();
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
 
             if (dtUserDistances.Rows.Count > 0)
