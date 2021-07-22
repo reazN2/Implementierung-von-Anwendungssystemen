@@ -17,17 +17,31 @@ namespace Implementierung_von_Anwendungssystemen.Views
     {
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUsers = new DataTable();
+        string name;
+        public void PickerUniversity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var name = PickerUniversity.Items[PickerUniversity.SelectedIndex];
+
+        }
 
         public Registration()
         {
             InitializeComponent();
+            PickerUniversity.Items.Add("Siegen");
+            PickerUniversity.Items.Add("Crete");
+            PickerUniversity.Items.Add("Maribor");
+            PickerUniversity.Items.Add("Orleans");
+            PickerUniversity.Items.Add("Porto");
+            PickerUniversity.Items.Add("Rome");
+            PickerUniversity.Items.Add("Vilnius");
 
         }
         void Button_Clicked(object sender, EventArgs e)
         {
             string userName = EntryUserName.Text;
             string userPassword = EntryUserPassword.Text;
-            string userUniversity = EntryUserUniversity.Text;
+            string userUniversity = PickerUniversity.Items[PickerUniversity.SelectedIndex];
             bool   userLocked = false;
             string userRole = "User";
             string userEmail;
@@ -60,9 +74,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
         
                 if (string.IsNullOrEmpty(userName))
                 {
-
-
-
                     DisplayAlert("Error", "Please enter a name", "OK");
                 }
                 else if (string.IsNullOrEmpty(userPassword))
@@ -75,10 +86,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                 }
                 else if (string.IsNullOrEmpty(userUniversity))
-                {
-                    DisplayAlert("Error", "Please insert a university name", "OK");
-                }
-               else if (alreadyExists == "true")
+            {
+                DisplayAlert("Error", "Please select a university", "OK");
+
+            }
+            else if (alreadyExists == "true")
                 {
                     DisplayAlert("Error", "That email adress is already used", "OK");
 
@@ -108,5 +120,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 }
 
             }
-        }
+
+
+    }
     }

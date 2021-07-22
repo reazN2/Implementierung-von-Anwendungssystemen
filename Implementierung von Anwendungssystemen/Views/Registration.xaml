@@ -17,8 +17,8 @@
                 <StackLayout Grid.Row="2">
                     <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail"/>
                 </StackLayout>
-                <StackLayout Grid.Row="3">
-                    <Entry Placeholder="University" FontSize="16" x:Name="EntryUserUniversity" />
+                <StackLayout Grid.Row="1">
+                    <Picker x:Name="PickerUniversity" SelectedIndexChanged="PickerUniversity_SelectedIndexChanged"  Title="Pick your University"></Picker>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
                         <Button VerticalOptions="Center" Text="Sign Up" Clicked="Button_Clicked"/>

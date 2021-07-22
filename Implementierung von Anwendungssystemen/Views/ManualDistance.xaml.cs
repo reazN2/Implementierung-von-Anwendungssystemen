@@ -16,12 +16,19 @@ namespace Implementierung_von_Anwendungssystemen.Views
     public partial class ManualDistance : ContentPage
     {
         DBAccess objDBAccess = new DBAccess();
+        string name;
+        public void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var name = MainPicker.Items[MainPicker.SelectedIndex];
+
+        }
         public ManualDistance()
         {
             InitializeComponent();
             MainPicker.Items.Add("Running");
+            MainPicker.Items.Add("Swimming");
             MainPicker.Items.Add("Cycling");
-
         }
 
         private void AddDistance_Clicked(object sender, EventArgs e)
@@ -45,48 +52,53 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             int value3;
             string stringManualCaloriesBurned = EntryManualCaloriesBurned.Text;
-            manualTypeOfSport = EntryManualTypeOfSport.Text;
+            manualTypeOfSport = MainPicker.Items[MainPicker.SelectedIndex];
             manualDayTime = EntryManualTimeOfTheDay.Text;
 
             if (string.IsNullOrEmpty(stringManualDistance))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No distance", "You have to add a distance in [Km]", "OK");
             } 
-            else if (string.IsNullOrEmpty(stringManualDistance))
+            else if (string.IsNullOrEmpty(stringManualDuration))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No duration", "You have to add a duration in [min]", "OK");
             }
-            else if (string.IsNullOrEmpty(stringManualDistance))
+            else if (string.IsNullOrEmpty(stringManualAverageSpeed))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No averagespeed", "You have to add an average speed in [Km/h]", "OK");
             }
-            else if (string.IsNullOrEmpty(stringManualDistance))
+            else if (string.IsNullOrEmpty(stringManualCaloriesBurned))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No calories burned", "You have to add the burned calories in [Kcal]", "OK");
             }
-            else if (string.IsNullOrEmpty(stringManualDistance))
+            else if (string.IsNullOrEmpty(manualTypeOfSport))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No Type of Sport", "You have to select one of the given Opportunities", "OK");
             }
-            else if (string.IsNullOrEmpty(stringManualDistance))
+            else if (string.IsNullOrEmpty(manualDayTime))
             {
-                DisplayAlert("No distance", "You have to add a distance", "OK");
+                DisplayAlert("No DayTime", "You have to add the time in the following format [hh:mm]", "OK");
             }
+
             else if (!float.TryParse(stringManualDistance, out value0))
             {
-                DisplayAlert("Error", "Please insert the distance only as numbers", "OK");
+                DisplayAlert("Error", "Please insert the distance only as a number in [Km]", "OK");
             }
             else if (!float.TryParse(stringManualDuration, out value1))
             {
-                DisplayAlert("Error", "Please insert the duration only as numbers", "OK");
+                DisplayAlert("Error", "Please insert the duration only as a number in [min]", "OK");
             }
             else if (!float.TryParse(stringManualAverageSpeed, out value2))
                 {
-                DisplayAlert("Error", "Please insert the the average speed only as numbers", "OK");
+                DisplayAlert("Error", "Please insert the the average speed only as a number in [Km/h]", "OK");
             }
             else if (!int.TryParse(stringManualCaloriesBurned, out value3))
             {
-                DisplayAlert("Error", "Please insert the the calories burned only as numbers", "OK");
+                DisplayAlert("Error", "Please insert the the calories burned only in [Kcal]", "OK");
+            }
+            else if (!int.TryParse(manualDayTime, out value3))
+            {
+                DisplayAlert("Error", "Please insert the the time in the following format [hh:mm] ", "OK");
             }
             else
             {
@@ -94,6 +106,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 manualDuration = float.Parse(stringManualDuration);
                 manualAverageSpeed = float.Parse(stringManualAverageSpeed);
                 manualCaloriesBurned = int.Parse(stringManualCaloriesBurned);
+
 
                 SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance,TypeOfSport,DayTime,Duration,AverageSpeed,CaloriesBurned,Id) values(@manualDistance, @manualTypeOfSport, @manualDayTime, @manualDuration, @manualAverageSpeed, @manualCaloriesBurned, @Ide)");
 
@@ -110,11 +123,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)
                 {
-                    DisplayAlert("Workout added!", "You successfully added a workout", "Continue");
+                    DisplayAlert("Activity added!", "You successfully added an activity", "Continue");
                 }
                 else
                 {
-                    DisplayAlert("Error", "Workout could not be added", "OK");
+                    DisplayAlert("Error", "Activity could not be added", "OK");
                 }
 
             }
@@ -122,10 +135,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
-        private void MainPicker_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var name = MainPicker.Items[MainPicker.SelectedIndex];
-            DisplayAlert(name, "Selected", "OK");
-        }
+
     }
 }

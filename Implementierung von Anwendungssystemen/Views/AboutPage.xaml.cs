@@ -38,7 +38,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0";
-            averageSpeed1.Text = "0";
+            //averageSpeed1.Text = "0";
         }
 
         /*private void btnStart_Clicked(object sender, EventArgs e)

@@ -16,7 +16,6 @@
                 </StackLayout>
                 <StackLayout Grid.Row="1">
                     <Label Text="Type of Sport" FontSize="Small"/>
-                    <Entry Placeholder="Type Of Sport" FontSize="16" x:Name="EntryManualTypeOfSport" ClearButtonVisibility="WhileEditing"/>
                     <Picker x:Name="MainPicker" SelectedIndexChanged="MainPicker_SelectedIndexChanged" Title="Which sort of Activity"></Picker>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
@@ -25,7 +24,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Label Text="Average Speed" FontSize="Small"/>
-                    <Entry Placeholder="Average Speed" FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
+                    <Entry Placeholder="Average Speed " FontSize="16" x:Name="EntryManualAverageSpeed" ClearButtonVisibility="WhileEditing"/>
                 </StackLayout>
                 <StackLayout Grid.Row="3">
                     <Label Text="Calories Burned" FontSize="Small"/>

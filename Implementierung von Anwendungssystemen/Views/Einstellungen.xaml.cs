@@ -15,15 +15,29 @@ namespace Implementierung_von_Anwendungssystemen.Views
     public partial class Einstellungen : ContentPage
     {
         DBAccess objDBAccess = new DBAccess();
+        string name;
+        public void PickerUniversitySettings_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            var name = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
+
+        }
         public Einstellungen()
         {
             InitializeComponent();
+            PickerUniversitySettings.Items.Add("Siegen");
+            PickerUniversitySettings.Items.Add("Crete");
+            PickerUniversitySettings.Items.Add("Maribor");
+            PickerUniversitySettings.Items.Add("Orleans");
+            PickerUniversitySettings.Items.Add("Porto");
+            PickerUniversitySettings.Items.Add("Rome");
+            PickerUniversitySettings.Items.Add("Vilnius");
 
 
             EntryUserName.Text = LoginPage.name;
             EntryUserEmail.Text = LoginPage.email;
             EntryUserPassword.Text = LoginPage.password;
-            EntryUserUniversity.Text = LoginPage.university;
+
 
         }
         
@@ -33,12 +47,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string newUserName = EntryUserName.Text;
             string newUserEmail; 
             string newUserPassword = EntryUserPassword.Text;
-            string newUserUniversity = EntryUserUniversity.Text;
-
+            string newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
-            if (Regex.IsMatch(email, emailPattern))
+            if (!Regex.IsMatch(email, emailPattern))
             {
                 newUserEmail = EntryUserEmail.Text;
             }
@@ -108,5 +121,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 }
             }
         }
+
+
     }
 }
