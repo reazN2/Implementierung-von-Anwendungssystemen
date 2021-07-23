@@ -21,23 +21,23 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
 
         int detailIndex = 0;
-        int neueVariable;
         private void PlusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex < dtUserDistances.Rows.Count - 1)
                 detailIndex++;
             else
                 detailIndex = 0;
-            refreshDetails();
-            neueVariable = dtUserDistances.Rows.Count - detailIndex ;
-        } 
+            afterClick();
+        }
 
         private void MinusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex > 0)
                 detailIndex--;
             else
-                neueVariable = dtUserDistances.Rows.Count - detailIndex;
+                detailIndex = dtUserDistances.Rows.Count - 1;
+            afterClick();
+
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
@@ -55,19 +55,21 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
 
+
         }
 
         public void refreshDetails()
         {
 
-            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId DESC";
+            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId ASC";
             dtUserDistances = new DataTable();
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
-
+            int detailIndex = dtUserDistances.Rows.Count - 1;
+            ActivityNumber.Text = (detailIndex+1).ToString();
             if (dtUserDistances.Rows.Count > 0)
             {
                 distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
-                userDistanceView.Text = Math.Round(float.Parse(distanceView),2).ToString();
+                userDistanceView.Text = Math.Round(float.Parse(distanceView), 2).ToString();
                 typeOfSportView = dtUserDistances.Rows[detailIndex]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;
                 dayTimeView = dtUserDistances.Rows[detailIndex]["DayTime"].ToString();
@@ -83,6 +85,34 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 DisplayAlert("Error", "You are not logged in", "OK");
             }
+        }
+        public void afterClick()
+        {
+
+            string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId ASC";
+            dtUserDistances = new DataTable();
+            objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
+            ActivityNumber.Text = (detailIndex + 1).ToString();
+            if (dtUserDistances.Rows.Count > 0)
+            {
+                distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
+                userDistanceView.Text = Math.Round(float.Parse(distanceView), 2).ToString();
+                typeOfSportView = dtUserDistances.Rows[detailIndex]["TypeOfSport"].ToString();
+                userTypeOfSportView.Text = typeOfSportView;
+                dayTimeView = dtUserDistances.Rows[detailIndex]["DayTime"].ToString();
+                userDayTime.Text = dayTimeView;
+                durationView = dtUserDistances.Rows[detailIndex]["Duration"].ToString();
+                userDurationView.Text = durationView;
+                averageSpeedView = dtUserDistances.Rows[detailIndex]["AverageSpeed"].ToString();
+                userAverageSpeedView.Text = Math.Round(float.Parse(averageSpeedView), 2).ToString(); ;
+                caloriesBurnedView = dtUserDistances.Rows[detailIndex]["CaloriesBurned"].ToString();
+                usercaloriesBurnedView.Text = caloriesBurnedView;
+            }
+            else
+            {
+                DisplayAlert("Error", "You are not logged in", "OK");
+            }
+
         }
     }
 }
