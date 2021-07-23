@@ -13,7 +13,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {   
-        /*Das Nächste ist static, damit man die Daten überall erreichen kann*/
+        // defines needed variables for the user creation
         public static string id, email, university, password, name, roles;
         public static int newID;
 
@@ -23,17 +23,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             InitializeComponent();
         }
-       // private void Button_Clicked_1(object sender, EventArgs e)
+        //navigates to the registration without deleting the stack of the appshell so there is a back button on the top left corner
         private async void Button_Clicked_1(object sender, EventArgs e)
-        {
-           // Navigation.PushAsync(new Registration());
-
+        { 
             await Shell.Current.GoToAsync(state: "//LoginPage/Registration");
-
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
-        //private void Button_Clicked(object sender, EventArgs e)
         {
             string userEmail = EntryUserEmail.Text;
             string userPassword = EntryUserPassword.Text;
@@ -55,6 +51,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                 if(dtUsers.Rows.Count == 1)
                 {
+                    // sets id name and so on to the user that was selected. These variables can than be used on other pages. For example the Account Page
                     id = dtUsers.Rows[0]["Id"].ToString();
                     email = dtUsers.Rows[0]["Email"].ToString();
                     university = dtUsers.Rows[0]["University"].ToString();

@@ -28,6 +28,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public Registration()
         {
             InitializeComponent();
+            // Sets Picker values for the Universities
             PickerUniversity.Items.Add("Siegen");
             PickerUniversity.Items.Add("Crete");
             PickerUniversity.Items.Add("Maribor");
@@ -37,6 +38,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             PickerUniversity.Items.Add("Vilnius");
 
         }
+        //sets all the variables that a user put into the xaml entry and assignes them to different variables
         void Button_Clicked(object sender, EventArgs e)
         {
             string userName = EntryUserName.Text;
@@ -46,7 +48,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             string userRole = "User";
             string userEmail;
             string alreadyExists;
-
+            //checks if university Picker is empty
             if (PickerUniversity.SelectedIndex < 0)
             {
                 userUniversity = "";
@@ -55,6 +57,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 userUniversity = PickerUniversity.Items[PickerUniversity.SelectedIndex];
             }
+            //checks if the email has the right format and if the user is from one of the participating universities
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
@@ -66,7 +69,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 userEmail = "";
             }
-
+            // checks if the email is already used
           string query = "Select * from Users Where Email= '" + userEmail + "'";
 
             objDBAccess.ReadDatathroughAdapter(query, dtUsers);
@@ -80,35 +83,34 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 alreadyExists = "false";
             }
 
-        
-                if (string.IsNullOrEmpty(userName))
-                {
-                    DisplayAlert("Error", "Please enter a name", "OK");
-                }
-                else if (string.IsNullOrEmpty(userPassword))
-                {
-                    DisplayAlert("Error", "Please enter a password", "OK");
-                }
-                else if (string.IsNullOrEmpty(userEmail))
-                {
-                    DisplayAlert("Error", "University mail from participating universities required", "OK");
-
-                }
-                else if (string.IsNullOrEmpty(userUniversity))
+            //checks if all the entries are filled
+            if (string.IsNullOrEmpty(userName))
+            {
+                DisplayAlert("Error", "Please enter a name", "OK");
+            }
+            else if (string.IsNullOrEmpty(userPassword))
+            {
+                DisplayAlert("Error", "Please enter a password", "OK");
+            }
+            else if (string.IsNullOrEmpty(userEmail))
+            {
+                DisplayAlert("Error", "University mail from participating universities required", "OK");
+            }
+            else if (string.IsNullOrEmpty(userUniversity))
             {
                 DisplayAlert("Error", "Please select a university", "OK");
-
             }
+            //displays an error if the user already exists
             else if (alreadyExists == "true")
                 {
                     DisplayAlert("Error", "That email adress is already used", "OK");
 
                 } 
                 else
-                {
+                {   //assignes fields to the right columns of the database
                     SqlCommand insertCommand = new SqlCommand("insert into Users(Name,Email,Password,University,Roles,Locked) values(@userName, @userEmail, @userPassword, @userUniversity, @userRole, @userLocked)");
 
-                    /*This Part is to make the Data private*/
+                    //insert the data to the right colums in the database
                     insertCommand.Parameters.AddWithValue("@userName", userName);
                     insertCommand.Parameters.AddWithValue("@userEmail", userEmail);
                     insertCommand.Parameters.AddWithValue("@userPassword", userPassword);
@@ -120,6 +122,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     if (row == 1)
                     {
                         DisplayAlert("Registration successful", "Account created successfully", "Continue to login");
+
+                    //sets all the inputs back to zero and navigates to the LoginPage
                     EntryUserName.Text = null;
                     EntryUserPassword.Text = null;
                     EntryUserEmail.Text = null;

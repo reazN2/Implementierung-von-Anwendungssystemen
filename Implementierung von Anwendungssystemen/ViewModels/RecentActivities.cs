@@ -16,10 +16,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
         DataTable dtUserDistances = new DataTable();
         DBAccess objDBAccess = new DBAccess();
 
-
+        //defines the variables of the User distance entry
         public static string distanceView, typeOfSportView, dayTimeView, durationView, averageSpeedView, caloriesBurnedView;
-
+        
         int detailIndex = 0;
+
+        //increments the detailIndex so the data that is shown changes to the next bigger row number
         private void PlusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex < dtUserDistances.Rows.Count - 1)
@@ -28,7 +30,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 detailIndex = 0;
             afterClick();
         }
-
+        // decreases the detailIndex so the data that is shown changes to the next smaller rom number
         private void MinusButton_Clicked(object sender, EventArgs e)
         {
             if (detailIndex > 0)
@@ -38,7 +40,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             afterClick();
 
         }
-
+        // leads you to the Add A Distance Menu Item
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"//{nameof(ManualDistance)}");
@@ -47,14 +49,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public DistanceTables()
         {
             InitializeComponent();
-
-            //Looks if there is a User that has the same Email and Password as the ones a user just entered in the frontend. Also checks if the user is not deactivated.
+            //this method calls the latest UserDistance entry for the current user
             refreshDetails();
-
-
-
-
-
         }
 
         public void refreshDetails()
@@ -68,6 +64,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (dtUserDistances.Rows.Count > 0)
             {
                 distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
+                //this rounds the Distance entry so the user does not have to see to many decimal places. But we wanted to have them in the database so no data is lost
                 userDistanceView.Text = Math.Round(float.Parse(distanceView), 2).ToString();
                 typeOfSportView = dtUserDistances.Rows[detailIndex]["TypeOfSport"].ToString();
                 userTypeOfSportView.Text = typeOfSportView;
@@ -76,6 +73,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 durationView = dtUserDistances.Rows[detailIndex]["Duration"].ToString();
                 userDurationView.Text = durationView;
                 averageSpeedView = dtUserDistances.Rows[detailIndex]["AverageSpeed"].ToString();
+                //this rounds the average Speed entry so the user does not have to see to many decimal places
                 userAverageSpeedView.Text = Math.Round(float.Parse(averageSpeedView), 2).ToString(); ;
                 caloriesBurnedView = dtUserDistances.Rows[detailIndex]["CaloriesBurned"].ToString();
                 usercaloriesBurnedView.Text = caloriesBurnedView;
@@ -85,13 +83,15 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 DisplayAlert("Error", "You are not logged in", "OK");
             }
         }
+
+        //does the same thing as the method before but uses the current detailIndex that was either incremented or decreased
         public void afterClick()
         {
 
             string query = "Select * from UserDistances Where Id= '" + LoginPage.newID + "' Order by DistanceId ASC";
             dtUserDistances = new DataTable();
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
-            ActivityNumber.Text = (detailIndex + 1).ToString();
+            ActivityNumber.Text = (detailIndex +1).ToString();
             if (dtUserDistances.Rows.Count > 0)
             {
                 distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();
