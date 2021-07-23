@@ -77,7 +77,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             // averageSpeed = distance / duration * 1000;
             averageSpeed = distance * 3600 / duration;
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
-            caloriesBurned = 10 * duration / 60;
+            caloriesBurned = 20 * duration / 60;
             caloriesBurned1.Text = caloriesBurned.ToString("####" + "kcal");
 
 
@@ -104,6 +104,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             distance = 0;
             averageSpeed = 0;
             caloriesBurned = 0;
+
 
             stop1 = false;
 
@@ -133,7 +134,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             if (typeOfSport == "")
 
             { DisplayAlert("No Activity", "Please select an Activity", "OK");}
-            else { 
+            else 
+            {
+                averageSpeed1.Text = "0";
+                caloriesBurned1.Text = "0";
                 string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
                 if ("Running" == run)
                 { ImageRun.IsVisible = true;

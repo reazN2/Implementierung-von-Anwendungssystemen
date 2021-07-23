@@ -134,6 +134,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 if (row == 1)
                 {
                     DisplayAlert("Activity added!", "You successfully added an activity", "Continue");
+                    EntryManualAverageSpeed.Text = null;
+                    EntryManualDistance.Text = null;
+                    EntryManualDuration.Text = null;
+                    EntryManualCaloriesBurned.Text = null;
+                    MainPicker.Items[MainPicker.SelectedIndex] = null;
                 }
                 else
                 {
