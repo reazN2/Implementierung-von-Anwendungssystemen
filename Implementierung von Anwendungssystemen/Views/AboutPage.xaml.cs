@@ -16,7 +16,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
     {
         DBAccess objDBAccess = new DBAccess();
 
-
+        // implementing global variables
         Stopwatch stopwatch;
         private bool stop1;
         private bool dis1;
@@ -36,8 +36,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public AboutPage()
         {
             InitializeComponent();
+
+            
             stopwatch = new Stopwatch();
 
+            // start page with text displays for stopwatch, Distance, averageSpeed and caloriesBurned
             lblStopwatch.Text = "00:00";
             stringDistance.Text = "0km";
             averageSpeed1.Text = "0";
@@ -47,8 +50,10 @@ namespace Implementierung_von_Anwendungssystemen.Views
             ActivityPicker.Items.Add("Swimming");
             ActivityPicker.Items.Add("Cycling");
             timePicker1.Time = DateTime.Now.TimeOfDay;
-            dayTime = timePicker1.Time.ToString(@"hh\:mm");
+            dayTime = timePicker1.Time.ToString(@"hh\:mm");  // pick the current time of day and save it to dayTime
         }
+
+        //Activity picker = chosen Sports activity
         private void ActivityPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -59,7 +64,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
 
-        
+        // Logout item clicked, navigate to LoginPage
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
@@ -78,7 +83,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             duration = stopwatch.Elapsed.TotalSeconds;
             averageSpeed = distance * 3600 / duration;
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
-            caloriesBurned = 20 * duration / 60;
+            caloriesBurned = 20 * duration / 60;     // This is just a static formula to calculate calories burned (an average consumption based on duration) ; given more thought and time this should be calculated by weight and height and duration/distance
             caloriesBurned1.Text = caloriesBurned.ToString("####" + "kcal");
 
             // inserting the specific data, e.g. distance/ duration / averagespeed etc. into the SQL database
@@ -126,16 +131,22 @@ namespace Implementierung_von_Anwendungssystemen.Views
             { DisplayAlert("No Activity", "Please select an Activity", "OK");}
             else 
             {
-                averageSpeed1.Text = "0";
-                caloriesBurned1.Text = "0";
+                averageSpeed1.Text = "0"; // Reset the displayed averageSpeed on the TrackingPage
+                caloriesBurned1.Text = "0"; // Reset the displayed caloriesBurned on the TrackingPage
                 string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
-                if ("Running" == run)
+              
+                
+                if ("Running" == run)       // Change the displayed icon corresponding to the chosen sports activity
+
                 { ImageRun.IsVisible = true;
                     ImageSwim.IsVisible = false;
                     ImageCycle.IsVisible = false;
                 }
+
                 else if ("Swimming" == run)
+
                 {
+
                     ImageRun.IsVisible = false;
                     ImageSwim.IsVisible = true;
                     ImageCycle.IsVisible = false;
@@ -173,7 +184,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     var gerade = CurrentLocation;
 
                     CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2)));
-                    distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers);
+                    distance += Location.CalculateDistance(gerade, CurrentLocation, DistanceUnits.Kilometers); // check the last location and the one prior and calculate the distance
                     stringDistance.Text = distance.ToString("0.00" + "km");
 
 
@@ -202,6 +213,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         }
 
+        // if Stop button clicked, stop GPS tracking and stop the timewatch
         private void BtnStop_Clicked(object sender, EventArgs e)
         {
             stop1 = true;
