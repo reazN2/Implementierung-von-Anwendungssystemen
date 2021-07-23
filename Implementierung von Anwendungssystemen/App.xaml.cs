@@ -1,5 +1,4 @@
-﻿using Implementierung_von_Anwendungssystemen.Services;
-using Implementierung_von_Anwendungssystemen.Views;
+﻿using Implementierung_von_Anwendungssystemen.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +12,6 @@ namespace Implementierung_von_Anwendungssystemen
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
         protected override void OnStart()

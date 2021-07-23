@@ -1,5 +1,4 @@
-﻿using Implementierung_von_Anwendungssystemen.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +22,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
         }
        // private void Button_Clicked_1(object sender, EventArgs e)
         private async void Button_Clicked_1(object sender, EventArgs e)
