@@ -120,8 +120,12 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     if (row == 1)
                     {
                         DisplayAlert("Registration successful", "Account created successfully", "Continue to login");
-                        Navigation.PushAsync(new LoginPage());
-                    }
+                    EntryUserName.Text = null;
+                    EntryUserPassword.Text = null;
+                    EntryUserEmail.Text = null;
+                    PickerUniversity.Items[PickerUniversity.SelectedIndex] = null;
+                    Navigation.PushAsync(new LoginPage());
+                }
                     else
                     {
                         DisplayAlert("Error", "Account could not be created", "OK");

@@ -97,10 +97,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 DisplayAlert("Error", "Please insert the distance only as a number in [Km]", "OK");
             }
-            else if (!float.TryParse(stringManualDuration, out value1))
-            {
-                DisplayAlert("Error", "Please insert the duration only as a number in [min]", "OK");
-            }
             else if (!float.TryParse(stringManualAverageSpeed, out value2))
                 {
                 DisplayAlert("Error", "Please insert the the average speed only as a number in [Km/h]", "OK");
@@ -113,7 +109,6 @@ namespace Implementierung_von_Anwendungssystemen.Views
             else
             {
                 manualDistance = float.Parse(stringManualDistance);
-                manualDuration = float.Parse(stringManualDuration);
                 manualAverageSpeed = float.Parse(stringManualAverageSpeed);
                 manualCaloriesBurned = int.Parse(stringManualCaloriesBurned);
 
@@ -124,7 +119,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 insertCommand.Parameters.AddWithValue("@manualDistance", manualDistance);
                 insertCommand.Parameters.AddWithValue("@manualTypeOfSport", manualTypeOfSport);
                 insertCommand.Parameters.AddWithValue("@manualDayTime", manualDayTime);
-                insertCommand.Parameters.AddWithValue("@manualDuration", manualDuration);
+                insertCommand.Parameters.AddWithValue("@manualDuration", stringManualDuration);
                 insertCommand.Parameters.AddWithValue("@manualAverageSpeed", manualAverageSpeed);
                 insertCommand.Parameters.AddWithValue("@manualCaloriesBurned", manualCaloriesBurned);
                 insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
