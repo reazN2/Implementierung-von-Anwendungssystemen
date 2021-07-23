@@ -35,6 +35,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         private void AddDistance_Clicked(object sender, EventArgs e)
         {
+            //type of variables get defined
             float manualDistance;
             string manualTypeOfSport;
             string manualDayTime;
@@ -42,20 +43,22 @@ namespace Implementierung_von_Anwendungssystemen.Views
             float manualAverageSpeed;
             int manualCaloriesBurned;
             
-
+            /* value 0-3 are only here to check if the other variables can be parsed */
             float value0;
-            string stringManualDistance = EntryManualDistance.Text;
-
             float value1;
-            string stringManualDuration = EntryManualDuration.Text;
-
             float value2;
-            string stringManualAverageSpeed = EntryManualAverageSpeed.Text;
-
             int value3;
+
+            //Entries of the user are assigned to a variable
+            string stringManualDistance = EntryManualDistance.Text;
+            string stringManualDuration = EntryManualDuration.Text;
+            string stringManualAverageSpeed = EntryManualAverageSpeed.Text;
             string stringManualCaloriesBurned = EntryManualCaloriesBurned.Text;
 
+            // time of the day get assigned to a variable with the correct format
             manualDayTime = timePicker.Time.ToString(@"hh\:mm");
+
+            //Checks if the user selected a sport
 
             if (MainPicker.SelectedIndex < 0)
             {
@@ -67,6 +70,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                 manualTypeOfSport = MainPicker.Items[MainPicker.SelectedIndex];
             }
 
+            // If statements are here to check if the user added all the necessary data and if they are in the correct format
 
             if (string.IsNullOrEmpty(stringManualDistance))
             {
@@ -108,14 +112,15 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             else
             {
+                //if all the data are in the correct format the rest of the variables get the right data with the right format
                 manualDistance = float.Parse(stringManualDistance);
                 manualAverageSpeed = float.Parse(stringManualAverageSpeed);
                 manualCaloriesBurned = int.Parse(stringManualCaloriesBurned);
 
-
+                // assignes the table columns to the right values
                 SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance,TypeOfSport,DayTime,Duration,AverageSpeed,CaloriesBurned,Id) values(@manualDistance, @manualTypeOfSport, @manualDayTime, @manualDuration, @manualAverageSpeed, @manualCaloriesBurned, @Ide)");
 
-                /*This Part is to make the Data private*/
+                // This part inserts the data into the database
                 insertCommand.Parameters.AddWithValue("@manualDistance", manualDistance);
                 insertCommand.Parameters.AddWithValue("@manualTypeOfSport", manualTypeOfSport);
                 insertCommand.Parameters.AddWithValue("@manualDayTime", manualDayTime);
@@ -127,8 +132,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
                 int row = objDBAccess.ExecuteQuery(insertCommand);
                 if (row == 1)
-                {
+                { 
                     DisplayAlert("Activity added!", "You successfully added an activity", "Continue");
+                    //resets all the values that are displayed
                     EntryManualAverageSpeed.Text = null;
                     EntryManualDistance.Text = null;
                     EntryManualDuration.Text = null;

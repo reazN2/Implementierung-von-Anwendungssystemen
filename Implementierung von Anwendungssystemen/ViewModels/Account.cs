@@ -19,7 +19,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         public void PickerUniversitySettings_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            var name = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
+            name = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
 
         }
         public Einstellungen()
