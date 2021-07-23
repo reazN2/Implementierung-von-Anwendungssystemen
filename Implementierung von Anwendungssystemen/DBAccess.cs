@@ -12,7 +12,10 @@ namespace Implementierung_von_Anwendungssystemen
         private static SqlDataReader DbReader;
         private static SqlDataAdapter adapter = new SqlDataAdapter();
         public SqlTransaction DbTran;
-
+        // this cs defines all the method that are needed to insert, read, delete (and so on) data from the database.
+        // these methods are used in the other ViewModels to connect to the database
+        
+        //this is the connection string to the SQL server
         private static string strConnString = "Data Source=ubi19.informatik.uni-siegen.de;Initial Catalog=Testdatenbank3;Persist Security Info=True;User ID=gruppe05-1;Password=Ningen18!";
 
 
@@ -39,7 +42,7 @@ namespace Implementierung_von_Anwendungssystemen
             connection.Close();
         }
 
-
+        //this method can insert, update and delete data from a table of the database
         public int ExecuteDataAdapter(DataTable tblName, string strSelectSql)
         {
             try
@@ -66,7 +69,6 @@ namespace Implementierung_von_Anwendungssystemen
                 throw ex;
             }
         }
-
 
         public void ReadDatathroughAdapter(string query, DataTable tblName)
         {

@@ -17,14 +17,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
         DBAccess objDBAccess = new DBAccess();
         string name;
         public void PickerUniversitySettings_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        { 
             name = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
-
         }
         public Einstellungen()
         {
             InitializeComponent();
+            // Sets Picker values
             PickerUniversitySettings.Items.Add("Siegen");
             PickerUniversitySettings.Items.Add("Crete");
             PickerUniversitySettings.Items.Add("Maribor");
@@ -33,7 +32,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             PickerUniversitySettings.Items.Add("Rome");
             PickerUniversitySettings.Items.Add("Vilnius");
 
-
+            //catches the values of the Person that is logged in and helps to display them
             EntryUserName.Text = LoginPage.name;
             EntryUserEmail.Text = LoginPage.email;
             EntryUserPassword.Text = LoginPage.password;
@@ -44,11 +43,14 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
         private void UpdateAccountInfo(object sender, EventArgs e)
         {
+            //defines strings that are used for updating the account
             string newUserName = EntryUserName.Text;
             string newUserEmail; 
             string newUserPassword = EntryUserPassword.Text;
             string newUserUniversity;
 
+
+            //checks if University is selected
             if (PickerUniversitySettings.SelectedIndex < 0)
             {
                 newUserUniversity = "";
@@ -57,6 +59,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 newUserUniversity = PickerUniversitySettings.Items[PickerUniversitySettings.SelectedIndex];
             }
+
+            //next few lines check if the E-Mail has the correct format and is only from participating universities
             var email = EntryUserEmail.Text;
             var emailPattern =
                 (@"^[a-zA-Z0-9._%+-]+(@student.uni-siegen.de|@unicusano.it|@unicusano.com|@student.um.si|@um.si|@hmu.gr|@vgtu.lt|@stud.vgtu.lt|@vilniustech.lt|@ipp.pt|@etu.univ-orleans.fr)$");
@@ -68,7 +72,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             {
                 newUserEmail = "";
             }
-
+            //checks if all the entries are not empty
             if (string.IsNullOrEmpty(newUserName))
             {
                 DisplayAlert("No Name", "Please insert a Name", "OK");
@@ -87,9 +91,11 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
             else
             {
+                //assignes the new values to the correct cloumns 
                 string query = "Update Users SET Name = '" + @newUserName + "', Email = '" + @newUserEmail + "', Password = '" + @newUserPassword + "', University = '" + @newUserUniversity + "' where ID = '" + LoginPage.id + "'";
                 SqlCommand updateCommand = new SqlCommand(query);
 
+                // updates the database
                 updateCommand.Parameters.AddWithValue("@userName", @newUserName);
                 updateCommand.Parameters.AddWithValue("@userEmail", @newUserEmail);
                 updateCommand.Parameters.AddWithValue("@userPassword", @newUserPassword);
@@ -108,16 +114,18 @@ namespace Implementierung_von_Anwendungssystemen.Views
             }
 
         }
-
+        //this is the method to delete the account
         private async void DeleteAccount(object sender, EventArgs e)
         {
             bool answer =  await DisplayAlert("Delete?", "Do you really want to delete your account?", "Delete", "Cancel");
             if (answer)
-            {
+            { 
+                //defines what should be deleted
                 string query = "DELETE from Users Where ID  = '" + LoginPage.id + "'";
 
                 SqlCommand deleteCommand = new SqlCommand(query);
 
+                // deletes the account and navigates to the loginPage
                 int row = objDBAccess.ExecuteQuery(deleteCommand);
                 if (row == 1)
                 {
