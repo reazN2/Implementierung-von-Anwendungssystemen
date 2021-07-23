@@ -25,9 +25,9 @@ namespace Implementierung_von_Anwendungssystemen.Views
         double duration;
         double averageSpeed;
         double caloriesBurned;
-        string dayTime = "14:56";
+        string dayTime;
         string typeOfSport;
-       
+
 
 
 
@@ -46,6 +46,8 @@ namespace Implementierung_von_Anwendungssystemen.Views
             ActivityPicker.Items.Add("Running");
             ActivityPicker.Items.Add("Swimming");
             ActivityPicker.Items.Add("Cycling");
+            timePicker1.Time = DateTime.Now.TimeOfDay;
+            dayTime = timePicker1.Time.ToString(@"hh\:mm");
         }
         private void ActivityPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -63,24 +65,23 @@ namespace Implementierung_von_Anwendungssystemen.Views
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
 
-
+        // Reset button clicked
         private void btnReset_Clicked(object sender, EventArgs e)
         {
             lblStopwatch.Text = "00:00";
-            btnCalculate.Text = "Start Activity";
-            // btnStart.Text = "Start";
+            btnCalculate.Text = "Start Activity"; // Reset the stopwatch displayed text and also change the startbutton to "Start Activity"
 
-            //duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+
+            // Once the button is clicked, calculate average speed and also calories burned. 
             var ts = stopwatch.Elapsed;
             duration1 = String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds);
             duration = stopwatch.Elapsed.TotalSeconds;
-            // averageSpeed = distance / duration * 1000;
             averageSpeed = distance * 3600 / duration;
             averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
             caloriesBurned = 10 * duration / 60;
             caloriesBurned1.Text = caloriesBurned.ToString("####" + "kcal");
 
-
+            // inserting the specific data, e.g. distance/ duration / averagespeed etc. into the SQL database
             SqlCommand insertCommand = new SqlCommand("insert into UserDistances(Distance, Duration, AverageSpeed,Daytime, CaloriesBurned,Id, TypeOfSport) values(@distance,@duration1,@averageSpeed,@dayTime,@caloriesBurned,@Ide,@typeOfSport)");
 
             //This Part is to make the Data private//
@@ -93,13 +94,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             insertCommand.Parameters.AddWithValue("@Ide", LoginPage.newID);
             int row = objDBAccess.ExecuteQuery(insertCommand);
 
-            /*if (duration > stopwatch.Elapsed.Minutes
-            {
-                caloriesBurned = 1 * 120;
-                    }; */
-
-
-            //  averageSpeed1.Text = averageSpeed.ToString("#.#" + "km/h");
+            // reset the stopwatch, after inserting the specific data into sql, reset the parameters of distance,average speed and calories burned.
             stopwatch.Reset();
             distance = 0;
             averageSpeed = 0;
@@ -108,20 +103,15 @@ namespace Implementierung_von_Anwendungssystemen.Views
             stop1 = false;
 
 
-            // transferiere die daten in die DB 
 
-
-
-            // averageSpeed = distance / 60;
-            //averageSpeed1.Text = averageSpeed.ToString("0.###" + "km/h");
 
 
 
         }
-
+        // start the gps and time tracking
         private async void BtnCalc_Clicked(object sender, EventArgs e)
         {
-            if (ActivityPicker.SelectedIndex < 0)
+            if (ActivityPicker.SelectedIndex < 0)  // if the Activitypicker is not chosen, display Error "no activity" and also the button wont work.
             {
                 typeOfSport = "";
 
@@ -134,7 +124,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
             { DisplayAlert("No Activity", "Please select an Activity", "OK");}
             else { 
-                string run = ActivityPicker.Items[ActivityPicker.SelectedIndex];
+                string run = ActivityPicker.Items[ActivityPicker.SelectedIndex]; // if the specific sport type is chosen, change the corresponding icon
                 if ("Running" == run)
                 { ImageRun.IsVisible = true;
                     ImageSwim.IsVisible = false;
@@ -153,7 +143,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
                     ImageCycle.IsVisible = true;
                 }
 
-
+                // stop1 bool is false and dis1 is true. start stopwatch and also track the elapsed time
                 stop1 = false;
                 dis1 = true;
                 stopwatch.Start();
@@ -165,10 +155,13 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
                 });
+
+                // name 2 different vars to check the start and current location
                 var StartLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
 
                 var CurrentLocation = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(3)));
 
+                // as long as dis1 = true, check the currentlocation and calculate 
                 while (dis1 == true)
                 {
 
@@ -181,7 +174,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
 
 
 
-                    //Console.WriteLine(distance.ToString());
+                    
 
 
 
@@ -209,8 +202,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
         {
             stop1 = true;
             stopwatch.Stop();
-            // Console.WriteLine("Time elapsed: {0}", stopwatch.Elapsed);
-            duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
+             duration = stopwatch.Elapsed.TotalMinutes + stopwatch.Elapsed.TotalSeconds;
 
 
 
