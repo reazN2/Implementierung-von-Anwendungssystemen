@@ -65,7 +65,7 @@ namespace Implementierung_von_Anwendungssystemen.Views
             dtUserDistances = new DataTable();
             objDBAccess.ReadDatathroughAdapter(query, dtUserDistances);
             int detailIndex = dtUserDistances.Rows.Count - 1;
-            ActivityNumber.Text = (detailIndex+1).ToString();
+            ActivityNumber.Text = (detailIndex +1).ToString();
             if (dtUserDistances.Rows.Count > 0)
             {
                 distanceView = dtUserDistances.Rows[detailIndex]["Distance"].ToString();

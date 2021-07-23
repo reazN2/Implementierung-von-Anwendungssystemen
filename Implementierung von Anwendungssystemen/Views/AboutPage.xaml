@@ -35,7 +35,9 @@
                     <Image Source="cycle.png" VerticalOptions="Start" HeightRequest="100"  x:Name="ImageCycle"/>
                 </ContentView>
             </StackLayout>
-            <TimePicker x:Name="timePicker1" TextColor="Gray"></TimePicker>
+            <TimePicker x:Name="timePicker1" TextColor="Gray" IsVisible="False">
+                
+            </TimePicker>
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="20,24,20,24" Spacing="10">
